@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 4 interactiva de Vectores en el plano y en el espacio para Álgebra y Geometría I.">
+  <meta name="theme-color" content="#173d7a">
+  <title>Unidad 4 · Vectores</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        packages: {'[+]': ['ams']},
+        macros: {sen: '\\operatorname{sen}'}
+      },
+      svg: {fontCache: 'global'},
+      options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="app.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="three-viewers.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="topbar">
+    <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <div>
+        <p class="eyebrow">Álgebra y Geometría I · Ingeniería en Petróleo</p>
+        <h1>Unidad 4 · Vectores en el plano y en el espacio</h1>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="button ghost compact" id="printButton" type="button">Imprimir recorrido</button>
+      <button class="button ghost compact" id="resetProgressButton" type="button">Reiniciar progreso</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación de la unidad">
+      <div class="progress-card">
+        <div class="progress-label"><span>Progreso</span><strong id="progressText">0%</strong></div>
+        <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+        <p id="progressDetail">Completá actividades y ejemplos para registrar tu avance.</p>
+      </div>
+
+      <nav class="module-nav" id="moduleNav">
+        <button class="nav-item active" data-target="inicio" type="button"><span>0</span> Inicio</button>
+        <button class="nav-item" data-target="concepto" type="button"><span>1</span> Concepto y componentes</button>
+        <button class="nav-item" data-target="operaciones" type="button"><span>2</span> Operaciones en el plano</button>
+        <button class="nav-item" data-target="espacio" type="button"><span>3</span> Vectores en el espacio</button>
+        <button class="nav-item" data-target="norma" type="button"><span>4</span> Norma, distancia y versores</button>
+        <button class="nav-item" data-target="componentes" type="button"><span>5</span> Componentes y aplicaciones</button>
+        <button class="nav-item" data-target="escalar" type="button"><span>6</span> Producto escalar</button>
+        <button class="nav-item" data-target="vectorial" type="button"><span>7</span> Producto vectorial</button>
+        <button class="nav-item" data-target="mixto" type="button"><span>8</span> Producto mixto y volumen</button>
+        <button class="nav-item" data-target="practica" type="button"><span>9</span> Práctica guiada</button>
+        <button class="nav-item" data-target="autoevaluacion" type="button"><span>10</span> Autoevaluación</button>
+        <button class="nav-item" data-target="materiales" type="button"><span>i</span> Videos y archivos</button>
+      </nav>
+
+      <div class="sidebar-note">
+        <strong>Regla de estudio</strong>
+        <p>Antes de mostrar una resolución, dibujá la situación, anticipá el signo de cada componente y estimá la dirección del resultado.</p>
+      </div>
+    </aside>
+
+    <main id="contenido" class="content">
+      <section class="module active" id="inicio" data-module="inicio">
+        <div class="hero vector-hero">
+          <div class="hero-copy">
+            <p class="kicker">Teoría + práctica + visualización 2D y 3D</p>
+            <h2>Un vector conecta el cálculo con la dirección, el sentido y la geometría</h2>
+            <p>Esta unidad transforma la teoría 2026, el TP 4 del recursado y las resoluciones de la cátedra en una ruta interactiva. Vas a manipular vectores, comparar métodos gráficos y analíticos, trabajar con productos escalar, vectorial y mixto, y modelizar fuerzas, velocidades, trabajo, áreas y volúmenes.</p>
+            <div class="hero-actions">
+              <button class="button primary" data-go="concepto" type="button">Comenzar la unidad</button>
+              <button class="button secondary" data-go="vectorial" type="button">Ir al laboratorio 3D</button>
+            </div>
+          </div>
+          <div class="hero-vector-art" aria-label="Representación decorativa de vectores">
+            <svg viewBox="0 0 420 350" role="img" aria-label="Vectores en un sistema cartesiano">
+              <defs><marker id="heroArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="currentColor"/></marker></defs>
+              <g class="hero-grid"><path d="M45 290H385M80 325V30"/><path d="M45 240H385M45 190H385M45 140H385M45 90H385M130 30V325M180 30V325M230 30V325M280 30V325M330 30V325"/></g>
+              <g class="hero-axis"><path d="M45 290H390"/><path d="M80 325V24"/></g>
+              <path class="hero-arrow hero-u" d="M80 290L300 95" marker-end="url(#heroArrow)"/><path class="hero-arrow hero-v" d="M80 290L175 230" marker-end="url(#heroArrow)"/><path class="hero-arrow hero-w" d="M80 290L300 35" marker-end="url(#heroArrow)"/>
+              <text x="306" y="92">u⃗</text><text x="180" y="228">v⃗</text><text x="310" y="45">u⃗+v⃗</text>
+            </svg>
+            <div class="hero-formula">\[\|\vec v\|=\sqrt{v_1^2+v_2^2+v_3^2}\]</div>
+          </div>
+        </div>
+
+        <div class="section-heading"><div><p class="kicker">Ruta de trabajo</p><h3>Cuatro preguntas que organizan toda la unidad</h3></div></div>
+        <div class="study-grid">
+          <article class="study-card"><span>1</span><h4>¿Qué representa?</h4><p>Reconocer origen, extremo, dirección, sentido, módulo y componentes.</p></article>
+          <article class="study-card"><span>2</span><h4>¿Cómo se calcula?</h4><p>Operar por componentes sin perder la interpretación geométrica.</p></article>
+          <article class="study-card"><span>3</span><h4>¿Qué relación hay?</h4><p>Decidir paralelismo, ortogonalidad, ángulos, proyecciones y coplanaridad.</p></article>
+          <article class="study-card"><span>4</span><h4>¿Qué modeliza?</h4><p>Aplicar vectores a fuerzas, velocidad, trabajo, áreas, volúmenes y altura.</p></article>
+        </div>
+
+        <article class="route-board">
+          <h3>Correspondencia con el TP 4 del recursado</h3>
+          <div class="route-columns">
+            <div><strong>Ejercicios 1–6</strong><p>Vectores equivalentes, operaciones, componentes desde puntos y paralelismo.</p></div>
+            <div><strong>Ejercicios 7–15</strong><p>Norma, distancia, versores, componentes canónicas y aplicaciones.</p></div>
+            <div><strong>Ejercicios 16–23</strong><p>Producto escalar, ángulo, proyección, trabajo y ortogonalidad.</p></div>
+            <div><strong>Ejercicios 24–28</strong><p>Producto vectorial, área, coplanaridad, producto mixto, volumen y altura.</p></div>
+          </div>
+        </article>
+
+        <article class="callout warning source-review">
+          <strong>Cómo se usan los materiales</strong>
+          <p>La teoría 2026 y las tres presentaciones de clase fijan la terminología y la secuencia conceptual. El TP 2025 y su resolución aportan los ejemplos gráficos; el TP del recursado continúa como banco principal de práctica. La página marca las diferencias de datos o notación cuando un enunciado y su desarrollo no coinciden.</p>
+        </article>
+      </section>
+
+      <section class="module" id="concepto" data-module="concepto" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 1</p><h2>Vector, vector libre y componentes</h2></div>
+          <button class="complete-button" data-complete="concepto" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="two-column">
+          <article class="theory-card">
+            <h3>Segmento orientado</h3>
+            <p>Un vector \(\overrightarrow{PQ}\) comienza en el punto inicial \(P\) y termina en el punto final \(Q\). Tiene dirección, sentido y módulo.</p>
+            <div class="formula-panel">\[\overrightarrow{PQ}=Q-P.\]</div>
+            <p>En \(\mathbb R^2\): \(\overrightarrow{PQ}=(x_Q-x_P,y_Q-y_P)\). En \(\mathbb R^3\) se agrega la diferencia de las coordenadas \(z\).</p>
+          </article>
+          <article class="theory-card">
+            <h3>Vectores equivalentes</h3>
+            <p>Dos vectores son equivalentes si poseen igual módulo, dirección y sentido. El vector libre es el representante de todos esos vectores equivalentes.</p>
+            <div class="formula-panel">\[\vec v=(v_1,v_2)\quad\text{o}\quad \vec v=(v_1,v_2,v_3).\]</div>
+            <p>Las componentes no indican dónde está dibujado el vector: describen el desplazamiento horizontal, vertical y, en el espacio, la variación en la tercera coordenada.</p>
+          </article>
+        </div>
+
+        <article class="activity-card free-vector-card" id="laboratorio-vector-libre">
+          <div class="activity-header">
+            <div>
+              <p class="tag">Concepto central · teoría 2026 y Clase Vectores, Parte 1</p>
+              <h3>Vector libre: muchas flechas, un mismo vector</h3>
+            </div>
+            <span class="status-pill">Arrastrá los puntos</span>
+          </div>
+          <p>Mové el punto inicial \(P\) y el punto final \(Q\). El applet calcula las componentes de \(\overrightarrow{PQ}\), dibuja varios vectores equivalentes y destaca en el origen al vector representante \(\vec v\).</p>
+
+          <div class="free-vector-layout">
+            <div>
+              <div class="svg-stage free-vector-stage">
+                <svg id="freeVectorSvg" viewBox="0 0 760 560" role="img" aria-label="Applet de vector libre con puntos inicial y final móviles, vectores equivalentes y vector representante"></svg>
+              </div>
+              <p class="drag-hint">Arrastrá los puntos grandes \(P\) y \(Q\), o cambiá sus coordenadas desde el panel. Las copias conservan las mismas componentes aunque cambie su ubicación.</p>
+            </div>
+
+            <div class="control-panel free-vector-controls">
+              <div class="formula-panel compact-formula" id="freeVectorFormula" aria-live="polite"></div>
+
+              <div class="free-vector-input-grid">
+                <fieldset>
+                  <legend>Punto inicial \(P\)</legend>
+                  <label>\(x_P\)<input id="freePx" type="number" min="-8" max="9" step="1" value="4"></label>
+                  <label>\(y_P\)<input id="freePy" type="number" min="-6" max="6" step="1" value="2"></label>
+                </fieldset>
+                <fieldset>
+                  <legend>Punto final \(Q\)</legend>
+                  <label>\(x_Q\)<input id="freeQx" type="number" min="-8" max="9" step="1" value="7"></label>
+                  <label>\(y_Q\)<input id="freeQy" type="number" min="-6" max="6" step="1" value="4"></label>
+                </fieldset>
+              </div>
+
+              <label class="check-control"><input id="showFreeEquivalents" type="checkbox" checked> Mostrar varios vectores equivalentes</label>
+              <label class="check-control"><input id="showFreeRepresentative" type="checkbox" checked> Mostrar el representante desde el origen</label>
+              <label class="check-control"><input id="showFreeComponents" type="checkbox" checked> Mostrar las componentes \(\Delta x\) y \(\Delta y\)</label>
+
+              <div class="activity-actions free-vector-actions">
+                <button class="button secondary" id="randomizeFreeCopies" type="button">Mover las copias equivalentes</button>
+                <button class="button ghost" id="resetFreeVector" type="button">Restablecer</button>
+              </div>
+
+              <div class="free-vector-legend" aria-label="Leyenda del applet">
+                <span><i class="legend-line bound-vector"></i>Vector ligado \(\overrightarrow{PQ}\)</span>
+                <span><i class="legend-line representative-vector"></i>Representante \(\vec v\)</span>
+                <span><i class="legend-line equivalent-copy"></i>Vectores equivalentes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-check">
+            <strong>Comprobá la idea</strong>
+            <p>Al trasladar una flecha para obtener un vector equivalente, ¿qué puede cambiar?</p>
+            <div class="option-grid" id="freeVectorQuestion">
+              <button class="choice-button" data-free-vector-answer="position" type="button">El punto inicial y el punto final</button>
+              <button class="choice-button" data-free-vector-answer="components" type="button">Las componentes del vector</button>
+              <button class="choice-button" data-free-vector-answer="geometry" type="button">El módulo, la dirección y el sentido</button>
+            </div>
+            <div class="feedback" id="freeVectorFeedback" aria-live="polite"></div>
+          </div>
+        </article>
+
+        <article class="activity-card vector-board-card">
+          <div class="activity-header"><div><p class="tag">TP 4 · ejercicio 1</p><h3>Trasladá, escalá y reflejá el vector</h3></div><span class="status-pill">\(P=(4,2),\ Q=(7,4)\)</span></div>
+          <p>Usá los botones para reconstruir el ejercicio con los datos del material 2025. El gráfico conserva el origen de cada vector y muestra sus componentes.</p>
+          <div class="vector-board-layout">
+            <div class="svg-stage"><svg id="equivalentVectorSvg" viewBox="0 0 720 520" role="img" aria-label="Laboratorio de vectores equivalentes"></svg></div>
+            <div class="control-panel">
+              <div class="formula-panel compact-formula" id="baseVectorFormula">\[\overrightarrow{PQ}=(3,2)\]</div>
+              <button class="choice-button vector-action" data-vector-action="free" type="button">1. Mostrar \(\vec v\) desde el origen</button>
+              <button class="choice-button vector-action" data-vector-action="double" type="button">2. Mostrar el vector de doble longitud desde \(A\)</button>
+              <button class="choice-button vector-action" data-vector-action="half" type="button">3. Mostrar sentido opuesto y mitad de longitud desde \(B\)</button>
+              <button class="choice-button vector-action" data-vector-action="reflections" type="button">4. Mostrar simetrías</button>
+              <button class="button ghost" id="resetEquivalentBoard" type="button">Limpiar construcciones</button>
+              <div class="feedback" id="equivalentVectorFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Calculadora explicativa</p><h3>Vector determinado por dos puntos</h3></div></div>
+          <div class="point-input-grid">
+            <fieldset><legend>Punto inicial \(P\)</legend><label>\(x_P\)<input id="pointPx" type="number" value="-3"></label><label>\(y_P\)<input id="pointPy" type="number" value="4"></label><label>\(z_P\)<input id="pointPz" type="number" value="0"></label></fieldset>
+            <fieldset><legend>Punto final \(Q\)</legend><label>\(x_Q\)<input id="pointQx" type="number" value="2"></label><label>\(y_Q\)<input id="pointQy" type="number" value="-1"></label><label>\(z_Q\)<input id="pointQz" type="number" value="0"></label></fieldset>
+          </div>
+          <div class="activity-actions"><button class="button primary" id="calculatePQ" type="button">Calcular paso a paso</button><button class="button ghost" id="togglePointDimension" type="button">Cambiar entre \(\mathbb R^2\) y \(\mathbb R^3\)</button></div>
+          <div class="step-stage" id="pointVectorSteps"></div>
+        </article>
+
+        <article class="callout info">
+          <strong>Pregunta conceptual</strong>
+          <p>Con origen fijo en \(A\), “igual dirección y doble longitud” permite dos sentidos: \(2\vec v\) y \(-2\vec v\). Si además se exige el mismo sentido, la respuesta queda determinada.</p>
+        </article>
+
+        <article class="video-card" data-video-id="IGskjrHqXVo">
+          <div class="video-copy"><p class="tag">Video de apoyo</p><h3>Vectores en \(\mathbb R^2\) y \(\mathbb R^3\)</h3><p>Usalo para repasar representación, componentes y operaciones antes de resolver las actividades.</p><button class="button secondary load-video" type="button">Cargar video</button></div>
+          <div class="video-placeholder"><span>▶</span><p>El video se carga cuando lo solicitás.</p></div>
+        </article>
+      </section>
+
+      <section class="module" id="operaciones" data-module="operaciones" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 2</p><h2>Operaciones con vectores en el plano</h2></div>
+          <button class="complete-button" data-complete="operaciones" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="two-column">
+          <article class="theory-card">
+            <h3>Cálculo por componentes</h3>
+            <div class="formula-panel">\[\vec u+\vec v=(u_1+v_1,u_2+v_2),\qquad k\vec u=(ku_1,ku_2).\]</div>
+            <p>La diferencia se interpreta como suma del opuesto: \(\vec u-\vec v=\vec u+(-\vec v)\).</p>
+          </article>
+          <article class="theory-card">
+            <h3>Interpretación geométrica</h3>
+            <p>La regla de la poligonal coloca el origen de cada vector en el extremo del anterior. La regla del paralelogramo hace coincidir los orígenes y usa la diagonal como resultante.</p>
+            <div class="formula-panel">\[\tfrac12(\vec u+\vec v)=\tfrac12\vec u+\tfrac12\vec v.\]</div>
+          </article>
+        </div>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">TP recursado · ejercicio 2</p><h3>Elegí una operación y compará el cálculo con el gráfico</h3></div><span class="status-pill">\(\vec u=(5,3),\ \vec v=(-2,4),\ \vec w=(-4,-1)\)</span></div>
+          <div class="operation-lab-layout">
+            <div class="svg-stage"><svg id="operationSvg" viewBox="0 0 700 500" role="img" aria-label="Operaciones con vectores en el plano"></svg></div>
+            <div class="control-panel">
+              <label>Operación<select id="operationSelect">
+                <option value="w2v">\(\vec w+2\vec v\)</option>
+                <option value="halfu">\(-\tfrac12\vec u+\vec v\)</option>
+                <option value="halfSum">\(\tfrac12(\vec v+\vec u)\)</option>
+                <option value="minusv">\(-\vec v+\vec w\)</option>
+                <option value="distributed">\(\tfrac12\vec v+\tfrac12\vec u\)</option>
+                <option value="combined">\(\vec u+3\vec v-\vec w\)</option>
+              </select></label>
+              <button class="button primary" id="calculateOperation" type="button">Mostrar resolución</button>
+              <div id="operationResult" class="formula-panel"></div>
+              <div class="feedback" id="operationFeedback" aria-live="polite"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Experimento</p><h3>¿Qué hace un escalar con un vector?</h3></div><span class="status-pill" id="scalarLabel">\(k=1\)</span></div>
+          <p>Mové el valor de \(k\). Observá el módulo, el sentido y el caso especial \(k=0\).</p>
+          <label class="range-control">Escalar \(k\)<input id="scalarSlider" type="range" min="-3" max="3" step="0.25" value="1"></label>
+          <div class="scalar-lab-layout"><svg id="scalarSvg" viewBox="0 0 700 390" role="img" aria-label="Producto de un vector por un escalar"></svg><div id="scalarExplanation" class="formula-panel"></div></div>
+        </article>
+
+        <div class="stepper-mount" data-stepper="vectorEquation"></div>
+      </section>
+
+      <section class="module" id="espacio" data-module="espacio" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 3</p><h2>Vectores en el espacio y combinaciones lineales</h2></div>
+          <button class="complete-button" data-complete="espacio" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <article class="theory-card wide">
+          <h3>De dos a tres componentes</h3>
+          <p>En \(\mathbb R^3\), un vector se escribe \(\vec v=(v_1,v_2,v_3)\). Cada componente representa una distancia orientada respecto de los planos coordenados, y los tres planos separan el espacio en ocho octantes.</p>
+          <div class="formula-panel">\[\vec v=v_1\,\hat\imath+v_2\,\hat\jmath+v_3\,\hat k.\]</div>
+        </article>
+
+        <article class="activity-card three-lab-card">
+          <div class="activity-header"><div><p class="tag">Visualizador Three.js</p><h3>Explorá un vector y sus proyecciones</h3></div><span class="status-pill">Rotar · zoom · desplazar</span></div>
+          <div class="three-layout">
+            <div class="three-stage" id="vector3dStage"><div class="three-fallback">Cargando visualización 3D…</div></div>
+            <div class="control-panel">
+              <label>Componente \(x\): <strong id="v3xLabel">-6</strong><input id="v3x" type="range" min="-8" max="8" step="1" value="-6"></label>
+              <label>Componente \(y\): <strong id="v3yLabel">3</strong><input id="v3y" type="range" min="-8" max="8" step="1" value="3"></label>
+              <label>Componente \(z\): <strong id="v3zLabel">4</strong><input id="v3z" type="range" min="-8" max="8" step="1" value="4"></label>
+              <div id="vector3dReadout" class="formula-panel"></div>
+              <label class="check-control"><input id="show3dProjections" type="checkbox" checked> Mostrar proyecciones sobre los planos</label>
+              <button class="button ghost" id="resetVector3dCamera" type="button">Reiniciar cámara</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Combinación lineal</p><h3>¿Puede un vector descomponerse en dos direcciones?</h3></div></div>
+          <div class="formula-panel">\[\vec u=(5,4),\qquad \vec a=(4,1),\qquad \vec b=(6,-4).\]</div>
+          <p>Buscamos escalares \(\alpha,\beta\) tales que \(\vec u=\alpha\vec a+\beta\vec b\).</p>
+          <div class="input-inline"><label>\(\alpha\)<input id="comboAlpha" type="number" step="0.5" value="0"></label><label>\(\beta\)<input id="comboBeta" type="number" step="0.5" value="0"></label></div>
+          <div class="activity-actions"><button class="button primary" id="checkCombination" type="button">Comprobar</button><button class="button secondary" id="showCombination" type="button">Mostrar sistema</button></div>
+          <div class="feedback" id="combinationFeedback" aria-live="polite"></div>
+        </article>
+      </section>
+
+      <section class="module" id="norma" data-module="norma" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 4</p><h2>Norma, distancia y versores</h2></div>
+          <button class="complete-button" data-complete="norma" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="two-column">
+          <article class="theory-card"><h3>Norma</h3><div class="formula-panel">\[\|(v_1,v_2)\|=\sqrt{v_1^2+v_2^2},\qquad \|(v_1,v_2,v_3)\|=\sqrt{v_1^2+v_2^2+v_3^2}.\]</div><p>Siempre es no negativa y sólo vale cero para el vector nulo. Además, \(\|k\vec v\|=|k|\|\vec v\|\).</p></article>
+          <article class="theory-card"><h3>Versor y distancia</h3><div class="formula-panel">\[\widehat v=\frac{\vec v}{\|\vec v\|},\qquad d(P,Q)=\|\overrightarrow{PQ}\|.\]</div><p>El versor tiene norma uno, la misma dirección y el mismo sentido que el vector no nulo.</p></article>
+        </div>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Calculadora</p><h3>Norma y versor asociado</h3></div></div>
+          <div class="input-inline"><label>\(v_1\)<input id="normX" type="number" value="2"></label><label>\(v_2\)<input id="normY" type="number" value="-1"></label><label>\(v_3\)<input id="normZ" type="number" value="2"></label></div>
+          <div class="activity-actions"><button class="button primary" id="calculateNorm" type="button">Calcular</button><button class="button secondary" id="oppositeUnit" type="button">Mostrar versor de sentido contrario</button></div>
+          <div id="normOutput" class="step-stage"></div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">TP recursado · ejercicios 8 y 9</p><h3>Parámetros y distancia</h3></div></div>
+          <div class="mini-labs">
+            <div class="mini-lab"><h4>Norma prescrita</h4><p>Para \(\vec v=(2,k,1)\), elegí el valor de \(k\) y observá la norma.</p><label>\(k\): <strong id="kNormLabel">0</strong><input id="kNormSlider" type="range" min="-5" max="5" step="0.25" value="0"></label><div id="kNormOutput" class="formula-panel"></div></div>
+            <div class="mini-lab"><h4>Distancia en \(\mathbb R^3\)</h4><p>Entre \(P=(2,-1,0)\) y \(Q=(-1,3,2)\).</p><button class="button secondary" id="revealDistance3d" type="button">Mostrar cálculo</button><div id="distance3dOutput" class="feedback"></div></div>
+          </div>
+        </article>
+
+        <article class="video-card" data-video-id="1G9cmitz2Z4">
+          <div class="video-copy"><p class="tag">Video de apoyo</p><h3>Norma en \(\mathbb R^2\) y \(\mathbb R^3\)</h3><p>Repaso de la fórmula, interpretación geométrica y ejercicios.</p><button class="button secondary load-video" type="button">Cargar video</button></div>
+          <div class="video-placeholder"><span>▶</span><p>El video se carga cuando lo solicitás.</p></div>
+        </article>
+      </section>
+
+      <section class="module" id="componentes" data-module="componentes" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 5</p><h2>Componentes cartesianas y aplicaciones</h2></div>
+          <button class="complete-button" data-complete="componentes" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <article class="theory-card wide">
+          <h3>Del módulo y el ángulo a las componentes</h3>
+          <div class="formula-panel">\[\vec v=\|\vec v\|(\cos\theta,\sen\theta).\]</div>
+          <p>El ángulo principal se mide desde el semieje positivo \(x\). Los signos de \(\cos\theta\) y \(\sen\theta\) determinan el cuadrante.</p>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Descomposición dinámica</p><h3>Modificá módulo y ángulo</h3></div><span class="status-pill" id="polarStatus">\(8\) unidades · \(30^\circ\)</span></div>
+          <div class="polar-layout">
+            <svg id="polarSvg" viewBox="0 0 700 440" role="img" aria-label="Descomposición de un vector en componentes cartesianas"></svg>
+            <div class="control-panel"><label>Módulo<input id="polarMagnitude" type="range" min="1" max="12" step="0.5" value="8"></label><label>Ángulo<input id="polarAngle" type="range" min="0" max="360" step="1" value="30"></label><div id="polarOutput" class="formula-panel"></div></div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Ingeniería en Petróleo</p><h3>Composición de fuerzas y velocidades</h3></div></div>
+          <div class="scenario-tabs" id="applicationTabs">
+            <button class="choice-button active" data-app-case="fluid" type="button">Fluido al noroeste</button>
+            <button class="choice-button" data-app-case="force" type="button">Fuerzas en tuberías</button>
+            <button class="choice-button" data-app-case="ship" type="button">Buque y corriente</button>
+          </div>
+          <div class="application-layout"><svg id="applicationSvg" viewBox="0 0 700 430" role="img" aria-label="Aplicaciones de vectores"></svg><div id="applicationExplanation" class="step-stage"></div></div>
+        </article>
+      </section>
+
+      <section class="module" id="escalar" data-module="escalar" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 6</p><h2>Producto escalar, ángulo y proyección</h2></div>
+          <button class="complete-button" data-complete="escalar" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="two-column">
+          <article class="theory-card"><h3>Dos formas de calcular</h3><div class="formula-panel">\[\vec u\cdot\vec v=u_1v_1+u_2v_2+u_3v_3=\|\vec u\|\|\vec v\|\cos\theta.\]</div><p>El producto escalar es un número real. Si ambos vectores son no nulos y el resultado es cero, son ortogonales.</p></article>
+          <article class="theory-card"><h3>Proyección vectorial</h3><div class="formula-panel">\[\operatorname{Proy}_{\vec s}\vec r=\frac{\vec r\cdot\vec s}{\|\vec s\|^2}\vec s.\]</div><p>La proyección es la componente de \(\vec r\) que apunta en la dirección de \(\vec s\).</p></article>
+        </div>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Laboratorio geométrico</p><h3>Ángulo y proyección en el plano</h3></div></div>
+          <div class="dot-layout">
+            <svg id="dotSvg" viewBox="0 0 700 500" role="img" aria-label="Producto escalar, ángulo y proyección"></svg>
+            <div class="control-panel">
+              <fieldset><legend>Vector \(\vec r\)</legend><label>\(r_x\)<input id="dotRx" type="number" value="2"></label><label>\(r_y\)<input id="dotRy" type="number" value="0"></label></fieldset>
+              <fieldset><legend>Vector \(\vec s\)</legend><label>\(s_x\)<input id="dotSx" type="number" value="1"></label><label>\(s_y\)<input id="dotSy" type="number" value="1.732"></label></fieldset>
+              <button class="button primary" id="calculateDot" type="button">Calcular y dibujar</button>
+              <div id="dotOutput" class="formula-panel"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Trabajo mecánico</p><h3>¿Cuánto aporta la fuerza al desplazamiento?</h3></div><span class="status-pill">\(W=\vec F\cdot\vec r\)</span></div>
+          <div class="work-controls"><label>Ángulo entre fuerza y desplazamiento: <strong id="workAngleLabel">0°</strong><input id="workAngle" type="range" min="0" max="180" step="1" value="0"></label><label>Módulo de la fuerza: <strong id="workForceLabel">10 N</strong><input id="workForce" type="range" min="1" max="20" step="1" value="10"></label><label>Desplazamiento: <strong id="workDistanceLabel">6 m</strong><input id="workDistance" type="range" min="1" max="12" step="1" value="6"></label></div>
+          <div id="workOutput" class="metric-grid"></div>
+        </article>
+
+        <div class="stepper-mount" data-stepper="cubeAngle"></div>
+
+        <article class="video-card" data-video-id="zomIqb4Di_Q">
+          <div class="video-copy"><p class="tag">Video de apoyo · UPV</p><h3>Producto escalar</h3><p>Prestá atención a la relación entre la definición geométrica y el cálculo por componentes.</p><button class="button secondary load-video" type="button">Cargar video</button></div>
+          <div class="video-placeholder"><span>▶</span><p>El video se carga cuando lo solicitás.</p></div>
+        </article>
+      </section>
+
+      <section class="module" id="vectorial" data-module="vectorial" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 7</p><h2>Producto vectorial, ortogonalidad y área</h2></div>
+          <button class="complete-button" data-complete="vectorial" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <article class="theory-card wide">
+          <h3>Un vector perpendicular al plano de \(\vec u\) y \(\vec v\)</h3>
+          <div class="formula-panel">\[\vec u\times\vec v=\begin{vmatrix}\hat\imath&\hat\jmath&\hat k\\u_1&u_2&u_3\\v_1&v_2&v_3\end{vmatrix},\qquad \|\vec u\times\vec v\|=\|\vec u\|\|\vec v\|\sen\theta.\]</div>
+          <p>La norma del producto vectorial es el área del paralelogramo. Al invertir el orden cambia el sentido: \(\vec v\times\vec u=-(\vec u\times\vec v)\).</p>
+        </article>
+
+        <article class="activity-card three-lab-card">
+          <div class="activity-header"><div><p class="tag">Laboratorio Three.js</p><h3>Producto vectorial y regla de la mano derecha</h3></div><span class="status-pill">\(\vec u=(1,0,2),\ \vec v=(2,-1,1)\)</span></div>
+          <div class="three-layout">
+            <div class="three-stage" id="cross3dStage"><div class="three-fallback">Cargando visualización 3D…</div></div>
+            <div class="control-panel">
+              <div class="vector-input-row"><strong>\(\vec u\)</strong><input id="crossUx" type="number" value="1" aria-label="u x"><input id="crossUy" type="number" value="0" aria-label="u y"><input id="crossUz" type="number" value="2" aria-label="u z"></div>
+              <div class="vector-input-row"><strong>\(\vec v\)</strong><input id="crossVx" type="number" value="2" aria-label="v x"><input id="crossVy" type="number" value="-1" aria-label="v y"><input id="crossVz" type="number" value="1" aria-label="v z"></div>
+              <div class="activity-actions"><button class="button primary" id="calculateCross" type="button">Calcular</button><button class="button secondary" id="swapCross" type="button">Invertir orden</button><button class="button ghost" id="resetCrossCamera" type="button">Reiniciar cámara</button></div>
+              <div id="crossOutput" class="formula-panel"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Familia de soluciones</p><h3>Todos los vectores perpendiculares a dos vectores</h3></div></div>
+          <p>Si \(\vec n=\vec u\times\vec v\neq\vec0\), todos los vectores no nulos perpendiculares a ambos son:</p>
+          <div class="formula-panel">\[\lambda\vec n,\qquad \lambda\in\mathbb R\setminus\{0\}.\]</div>
+          <label class="range-control">Escalar \(\lambda\): <strong id="normalLambdaLabel">1</strong><input id="normalLambda" type="range" min="-3" max="3" step="0.25" value="1"></label>
+          <div id="normalFamilyOutput" class="feedback"></div>
+        </article>
+
+        <article class="video-card" data-video-id="EmK5bFVrB6k">
+          <div class="video-copy"><p class="tag">Video de apoyo</p><h3>Producto vectorial y regla de la mano derecha</h3><p>Compará el sentido de \(\vec u\times\vec v\) con el de \(\vec v\times\vec u\).</p><button class="button secondary load-video" type="button">Cargar video</button></div>
+          <div class="video-placeholder"><span>▶</span><p>El video se carga cuando lo solicitás.</p></div>
+        </article>
+      </section>
+
+      <section class="module" id="mixto" data-module="mixto" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 8</p><h2>Producto mixto, coplanaridad y volumen</h2></div>
+          <button class="complete-button" data-complete="mixto" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="two-column">
+          <article class="theory-card"><h3>Producto mixto</h3><div class="formula-panel">\[[\vec u,\vec v,\vec w]=\vec u\cdot(\vec v\times\vec w).\]</div><p>Su valor absoluto es el volumen del paralelepípedo. Si vale cero, los tres vectores son coplanares.</p></article>
+          <article class="theory-card"><h3>Altura respecto de una base</h3><div class="formula-panel">\[h=\frac{|\vec u\cdot(\vec v\times\vec w)|}{\|\vec v\times\vec w\|},\qquad \vec h=\operatorname{Proy}_{\vec v\times\vec w}\vec u.\]</div><p>La base está generada por \(\vec v\) y \(\vec w\); la altura es la componente de \(\vec u\) perpendicular a esa base.</p></article>
+        </div>
+
+        <article class="activity-card three-lab-card">
+          <div class="activity-header"><div><p class="tag">TP recursado · ejercicio 28.i</p><h3>Paralelepípedo: base, volumen y vector altura</h3></div><span class="status-pill">Exploración 3D</span></div>
+          <div class="three-layout">
+            <div class="three-stage" id="volume3dStage"><div class="three-fallback">Cargando visualización 3D…</div></div>
+            <div class="control-panel">
+              <div class="formula-panel">\[\vec u=(1,2,3),\quad\vec v=(2,0,1),\quad\vec w=(1,3,0).\]</div>
+              <div id="volumeReadout" class="metric-grid"></div>
+              <label class="check-control"><input id="showHeightVector" type="checkbox" checked> Mostrar vector altura</label>
+              <button class="button ghost" id="resetVolumeCamera" type="button">Reiniciar cámara</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Coplanaridad con parámetro</p><h3>Encontrá \(\alpha\) para que tres vectores sean coplanares</h3></div></div>
+          <div class="formula-panel">\[\vec u=(1,-2,3),\quad \vec v=(\alpha,1,-1),\quad \vec w=(2,0,1).\]</div>
+          <label class="range-control">\(\alpha\): <strong id="coplanarAlphaLabel">0</strong><input id="coplanarAlpha" type="range" min="-3" max="3" step="0.25" value="0"></label>
+          <div id="coplanarOutput" class="formula-panel"></div>
+          <button class="button secondary" id="showCoplanarValue" type="button">Mostrar el valor exacto</button>
+          <div class="feedback" id="coplanarFeedback"></div>
+        </article>
+      </section>
+
+      <section class="module" id="practica" data-module="practica" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 9</p><h2>Práctica guiada y detección de errores</h2></div>
+          <button class="complete-button" data-complete="practica" type="button">Marcar módulo como revisado</button>
+        </div>
+
+        <div class="stepper-mount" data-stepper="guidedEquivalent"></div>
+        <div class="stepper-mount" data-stepper="guidedProjection"></div>
+        <div class="stepper-mount" data-stepper="guidedCross"></div>
+        <div class="stepper-mount" data-stepper="guidedVolume"></div>
+
+        <article class="activity-card">
+          <div class="activity-header"><div><p class="tag">Detectá el error</p><h3>Elegí la corrección adecuada</h3></div><span class="status-pill" id="errorCaseCounter">Caso 1</span></div>
+          <div id="errorStatement" class="formula-panel"></div>
+          <div id="errorOptions" class="option-grid"></div>
+          <div class="activity-actions"><button class="button ghost" id="nextErrorCase" type="button">Otro caso</button></div>
+          <div class="feedback" id="errorFeedback" aria-live="polite"></div>
+        </article>
+
+        <article class="callout warning">
+          <strong>Revisión de la resolución 2025</strong>
+          <p>En una sección, el enunciado usa \(A=(1,3,1)\), \(B=(1,2,1)\), \(C=(0,0,2)\), pero el desarrollo sustituye otros puntos. En esta página se conservan siempre los datos del enunciado que está siendo resuelto. También se corrigen simplificaciones tipográficas en versores, proyecciones y trabajo.</p>
+        </article>
+      </section>
+
+      <section class="module" id="autoevaluacion" data-module="autoevaluacion" hidden>
+        <div class="module-title">
+          <div><p class="kicker">Módulo 10</p><h2>Autoevaluación de la Unidad 4</h2></div>
+          <button class="complete-button" data-complete="autoevaluacion" type="button">Marcar módulo como revisado</button>
+        </div>
+        <article class="quiz-card">
+          <div class="quiz-intro"><div><h3>Diez preguntas aleatorias</h3><p>El banco combina interpretación, operaciones, norma, productos, aplicaciones y geometría. Cada intento cambia las preguntas y el orden de las opciones.</p></div><button class="button secondary" id="newQuiz" type="button">Generar otro intento</button></div>
+          <form id="quizForm"><div id="quizQuestions"></div><div class="activity-actions"><button class="button primary" type="submit">Corregir autoevaluación</button></div></form>
+          <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+        </article>
+      </section>
+
+      <section class="module" id="materiales" data-module="materiales" hidden>
+        <div class="module-title"><div><p class="kicker">Recursos</p><h2>Videos y materiales de la cátedra</h2></div></div>
+
+        <div class="section-heading"><div><p class="kicker">Videos seleccionados</p><h3>Recursos para mirar con una pregunta en mente</h3></div></div>
+        <div class="video-list">
+          <a href="https://www.youtube.com/watch?v=IGskjrHqXVo" target="_blank" rel="noopener"><strong>Vectores en \(\mathbb R^2\) y \(\mathbb R^3\)</strong><span>Representación, componentes y ejercicios</span></a>
+          <a href="https://www.youtube.com/watch?v=SBc7Je9WQv0" target="_blank" rel="noopener"><strong>Álgebra vectorial · UPV</strong><span>Suma, escalar, producto escalar y vectorial</span></a>
+          <a href="https://www.youtube.com/watch?v=zomIqb4Di_Q" target="_blank" rel="noopener"><strong>Producto escalar · UPV</strong><span>Definición e interpretación</span></a>
+          <a href="https://www.youtube.com/watch?v=6l7tXt5Anrs" target="_blank" rel="noopener"><strong>Proyección de un vector</strong><span>Procedimiento en \(\mathbb R^3\)</span></a>
+          <a href="https://www.youtube.com/watch?v=EmK5bFVrB6k" target="_blank" rel="noopener"><strong>Producto vectorial</strong><span>Regla de la mano derecha</span></a>
+          <a href="https://www.youtube.com/watch?v=0Gu2IF5xcw8" target="_blank" rel="noopener"><strong>Cálculo del trabajo · UPV</strong><span>Fuerza y desplazamiento</span></a>
+        </div>
+
+        <div class="section-heading"><div><p class="kicker">Archivos incluidos</p><h3>Material de estudio y fuentes LaTeX</h3></div></div>
+        <div class="resource-grid">
+          <a class="resource-card" href="materiales/teoria-vectores-2026.pdf"><span>PDF</span><div><strong>Teoría completa 2026</strong><p>Vectores en el plano y en el espacio.</p></div></a>
+          <a class="resource-card" href="materiales/tp4-recursado-2026.tex"><span>TeX</span><div><strong>TP 4 del recursado</strong><p>Fuente LaTeX usada como práctica principal.</p></div></a>
+          <a class="resource-card" href="materiales/resolucion-tp4-recursado-2026.tex"><span>TeX</span><div><strong>Resolución del recursado</strong><p>Desarrollos y gráficos paso a paso.</p></div></a>
+          <a class="resource-card" href="materiales/tp4-2025.pdf"><span>PDF</span><div><strong>Trabajo Práctico 4 · 2025</strong><p>Versión original de la cátedra.</p></div></a>
+          <a class="resource-card" href="materiales/tp4-2025.tex"><span>TeX</span><div><strong>Fuente del TP 2025</strong><p>Documento editable en LaTeX.</p></div></a>
+          <a class="resource-card" href="materiales/resolucion-tp4-2025.pdf"><span>PDF</span><div><strong>Resolución TP 4 · 2025</strong><p>Ejemplos analíticos y gráficos complementarios.</p></div></a>
+          <a class="resource-card" href="materiales/resolucion-tp4-2025.tex"><span>TeX</span><div><strong>Fuente de la resolución 2025</strong><p>Documento editable en LaTeX.</p></div></a>
+          <a class="resource-card" href="materiales/clase-vectores-parte-1-2026.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 1</strong><p>Conceptos iniciales, vectores equivalentes, vector libre y operaciones.</p></div></a>
+          <a class="resource-card" href="materiales/clase-vectores-parte-2.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 2</strong><p>Norma, versores, distancia y descomposición.</p></div></a>
+          <a class="resource-card" href="materiales/clase-vectores-parte-3.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 3</strong><p>Producto vectorial, perpendicularidad y aplicaciones geométricas.</p></div></a>
+        </div>
+
+        <article class="callout info"><strong>Uso sin servidor</strong><p>La página funciona con HTML, CSS y JavaScript estático. MathJax y Three.js se cargan desde CDN; el resto queda dentro del repositorio.</p></article>
+      </section>
+    </main>
+  </div>
+
+  <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+</body>
+</html>

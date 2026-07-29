@@ -1,0 +1,303 @@
+
+\begin{document}
+
+\setlength{\headheight}{15pt}
+
+\vspace*{-2.5cm}
+\begin{figure}[htbp]
+  \begin{minipage}[r][][t]{0.15\textwidth}
+\begin{center}
+ \includegraphics[width=2.2cm, height=2.2cm]{imagen/inglogo.jpg}
+\vspace{1.8cm}
+\end{center}
+\end{minipage}\quad
+\begin{minipage}[r][][t]{0.31\textwidth}
+\begin{center}
+\vspace*{-25mm}
+{\bf \materia }\\[2mm]
+{\bf Módulo 4}
+\end{center}
+\end{minipage}\quad\begin{minipage}[r][][t]{0.31\textwidth}
+\begin{center}
+\vspace*{-25mm}
+\textit{Ingeniería en Petróleo} \\[2mm]
+Recursado 2026
+\end{center}
+\end{minipage}\quad
+\begin{minipage}[r][][t]{0.15\textwidth}
+  \begin{center}
+     \includegraphics[width=2.2cm, height=2.2cm]{imagen/Logo_UNco.jpg}
+     \vspace{1.8cm}
+  \end{center}
+\end{minipage}
+\end{figure}
+\vspace*{-33mm}
+
+\begin{center}
+{\bf \Large{ Trabajo Práctico 4: Vectores. Recursado }}
+\end{center}
+
+\newcommand{\ejesXY}[4]{%
+\draw[->] (#1-.3,0) -- (#2+.3,0) node[right] {$x$};
+\draw[->] (0,#3-.3) -- (0,#4+.3) node[above] {$y$};
+\draw[color=gray!30,dash pattern=on 1pt off 1pt,xstep=1cm,ystep=1cm] (#1-.3,#3-.3) grid (#2+.3,#4+.3);
+\foreach \x in {#1,...,-1,1,...,#2}{\draw[shift={(\x,0)},color=black] (0pt,2pt)--(0pt,-2pt) node[below] {\tiny $\x$};}
+\foreach \y in {#3,...,-1,1,...,#4}{\draw[shift={(0,\y)},color=black] (2pt,0pt)--(-2pt,0pt) node[left] {\tiny $\y$};}
+}
+\newcommand{\dibvec}[4][blue]{\draw[->,line width=1.4pt,color=#1] #2 -- #3 node[pos=.62,above,sloped] {\scriptsize #4};}
+
+\begin{enumerate}[\hspace{-3mm}$1)$]
+
+\item Dados el vector $\overrightarrow{PQ}$ y los puntos $A$ y $B$, en el siguiente sistema de ejes cartesianos, encontrar gráficamente:
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,scale=.8]
+\ejesXY{-3}{9}{-3}{7}
+\coordinate (P) at (2,1);
+\coordinate (Q) at (6,3);
+\coordinate (A) at (-1,2);
+\coordinate (B) at (5,-1);
+\draw[fill=black] (P) circle (1.5pt) node[below right] {\scriptsize $P=(2,1)$};
+\draw[fill=black] (Q) circle (1.5pt) node[above right] {\scriptsize $Q=(6,3)$};
+\draw[fill=black] (A) circle (1.5pt) node[above left] {\scriptsize $A=(-1,2)$};
+\draw[fill=black] (B) circle (1.5pt) node[below right] {\scriptsize $B=(5,-1)$};
+\draw[->,line width=1.5pt,color=blue] (P)--(Q) node[pos=.58,above,sloped] {\scriptsize $\overrightarrow{PQ}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item[a)] Un vector $\vec v$ equivalente al vector $\overrightarrow{PQ}$ con origen en el punto $(0,0)$.
+    \item[b)] Un vector, con origen en el punto $A$, que tenga igual dirección y el doble de longitud que el vector $\vec v$. ¿Es único? ¿Por qué?
+    \item[c)] Un vector $\vec z$, con origen en el punto $B$, de igual dirección, sentido opuesto y la mitad de la longitud que $\vec v$.
+    \item[d)] Un vector simétrico al vector $\vec v$ con respecto al eje $x$ y otro vector simétrico con respecto al eje $y$.
+\end{itemize}
+
+\item Dados los vectores pertenecientes a $\mathbb{R}^2$, $\vec u=(5,3)$, $\vec v=(-2,4)$ y $\vec w=(-4,-1)$:
+\begin{enumerate}[a)]
+\item Representarlos en un mismo sistema de ejes cartesianos.
+\item Calcular analítica y gráficamente las siguientes operaciones:
+\begin{enumerate}[i)]
+\begin{multicols}{3}
+\item $\vec w+2\vec v$.
+\item $-\dfrac12\vec u+\vec v$.
+\item $\dfrac12(\vec v+\vec u)$.
+\item $-\vec v+\vec w$.
+\item $\dfrac12\vec v+\dfrac12\vec u$.
+\item $\vec u+3\vec v-\vec w$.
+\end{multicols}
+\end{enumerate}
+\item ¿Qué propiedad relaciona los incisos {\scriptsize$III)$} y {\scriptsize$V)$}?
+\end{enumerate}
+
+\item Dados los vectores $\vec v=(3,-6,2)$, $\vec w=\left(\dfrac15,0,-2\right)$ y $\vec z=(-2,4,1)$:
+\begin{enumerate}[a)]
+\item Calcular analíticamente cada una de las operaciones que se indican:
+\begin{enumerate}[i)]
+\item $2(\vec v-3\vec w)$.
+\item $-3\left(\dfrac12\vec z+\vec v\right)+2\vec w$.
+\end{enumerate}
+\item Determinar las componentes del vector $\vec u$ que satisfaga: $\vec v-2\vec u+\vec z=2\vec w-4\vec u$.
+\end{enumerate}
+
+\item Determinar la respuesta correcta: Los siete vectores de la figura unen el centro de una circunferencia con algún punto de la misma. Si sumamos estos siete vectores el resultado:
+
+\begin{minipage}{.6\textwidth}
+\begin{center}
+\begin{tikzpicture}[>=triangle 45,rotate=-15]
+\xdef\r{2.1}
+\draw[dashed] (0,0) circle(\r cm);
+\foreach \angle/\label in {0/$\vec t$,45/$\vec m$,90/$\vec n$,135/$\vec u$,180/$\vec p$,225/$\vec q$,315/$\vec r$}{
+\draw[->,thick] (0,0)--(\angle:\r cm) node[pos=1.15]{\label};}
+\foreach \angle in {22,67,112,157,202,270}{\draw (\angle:.65cm) node[shift={(\angle:4pt)}]{\tiny $45^\circ$};}
+\fill[blue] (0,0) circle(2pt);
+\end{tikzpicture}
+\end{center}
+\end{minipage}\quad\begin{minipage}{.38\textwidth}
+\begin{itemize}
+\item[a)] Es igual a $-\vec n$.
+\item[b)] Es igual a $\vec m+\vec q$.
+\item[c)] Es igual a $\vec n$.
+\item[d)] Es igual al vector nulo.
+\item[e)] No es ninguna de las opciones anteriores.
+\end{itemize}
+\end{minipage}
+
+\item Determinar las componentes del vector $\vec v$ que tiene al punto $P$ como origen y al punto $Q$ como extremo en cada uno de los siguientes casos:
+\begin{enumerate}[a)]
+\begin{multicols}{2}
+\item $P=(-3,4)$ y $Q=(2,-1)$.
+\item $P=(-1,2,4)$ y $Q=(3,-2,1)$.
+\end{multicols}
+\end{enumerate}
+
+\item Siendo $A=(2,1,-1)$, $B=(3,-2,0)$ y $C=(-1,4,2)$ puntos pertenecientes a $\mathbb{R}^3$. Hallar:
+\begin{itemize}
+\item[a)] El punto $D$ tal que $\overrightarrow{AD}$ resulte equivalente al vector $\overrightarrow{BC}$.
+\item[b)] Un punto $M$ tal que el vector $\overrightarrow{CM}$ resulte paralelo al vector $\overrightarrow{AB}$. ¿Es único el punto encontrado? ¿Por qué?
+\end{itemize}
+
+\item Dados los vectores $\vec a=\left(2,\dfrac32\right)$, $\vec b=(-1,5)$ y $\vec c=(2\sqrt2,-\sqrt2,\sqrt2)$, calcular:
+\begin{itemize}
+\begin{multicols}{4}
+\item[a)] $\|\vec a\|$.
+\item[b)] $\|-\vec a\|$.
+\item[c)] $\|\vec b-\vec a\|$.
+\item[d)] $\|-2\vec c\|$.
+\end{multicols}
+\end{itemize}
+
+\item Determinar todos los valores de $k\in\mathbb{R}$ para los cuales resulta:
+\begin{itemize}
+\begin{multicols}{2}
+\item[a)] $\|\vec v\|=3$, siendo $\vec v=(2,k,1)$.
+\item[b)] $\|\vec v\|=6$, siendo $\vec v=k(1,2,2)$.
+\end{multicols}
+\end{itemize}
+
+\item Calcular la distancia entre los puntos $P$ y $Q$ en cada caso:
+\begin{enumerate}[a)]
+\begin{multicols}{2}
+\item $P=(-2,1)$ y $Q=(4,-2)$.
+\item $P=(2,-1,0)$ y $Q=(-1,3,2)$.
+\end{multicols}
+\end{enumerate}
+
+\item Sean los vectores $\vec u=(2,-1,2)$ y $\vec p=(2,1,2)$, hallar:
+\begin{itemize}
+\item[a)] Un vector paralelo a $\vec p$ que tenga norma seis. ¿Cuántos vectores existen con estas condiciones?
+\item[b)] El vector opuesto a $\dfrac12\vec u$.
+\item[c)] Un versor paralelo a $(\vec u+\vec p)$ y con sentido contrario.
+\end{itemize}
+
+\item Expresar los siguientes vectores como descomposición en las direcciones de los versores canónicos correspondientes:
+\begin{itemize}
+\begin{multicols}{2}
+\item[a)] $\vec u=\left(3,-\dfrac52\right)$.
+\item[b)] $\vec v=(2,-1,6)$.
+\end{multicols}
+\end{itemize}
+
+\item Dado el vector $\vec u$ del siguiente gráfico. Encontrar las componentes de dicho vector en la dirección de los vectores canónicos.
+
+\begin{enumerate}[a)]
+\begin{minipage}{.45\textwidth}
+\item \vspace{-8mm}
+\begin{center}
+\begin{tikzpicture}[>=triangle 45,scale=.55]
+\draw[->] (-1,0)--(8,0) node[below]{$x$};
+\draw[->] (0,-1)--(0,6) node[left]{$y$};
+\draw[->,thick,blue] (0,0)--(30:8) node[above right]{$\vec u$};
+\draw[thick,->] (1.6,0) arc[start angle=0,end angle=30,radius=1.6cm] node[pos=.55,shift={(15:5mm)}]{\small $30^\circ$};
+\node[left] at (-.4,2.7){\small $\|\vec u\|=8$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}\qquad\begin{minipage}{.45\textwidth}
+\item \vspace{-8mm}
+\begin{center}
+\begin{tikzpicture}[>=triangle 45,scale=.55]
+\draw[->] (-6,0)--(4,0) node[below]{$x$};
+\draw[->] (0,-1)--(0,7) node[left]{$y$};
+\draw[->,thick,blue] (0,0)--(150:6) node[above left]{$\vec u$};
+\draw[thick,->] (1.5,0) arc[start angle=0,end angle=150,radius=1.5cm] node[pos=.45,shift={(75:5mm)}]{\small $150^\circ$};
+\node[right] at (35:4){\small $\|\vec u\|=6$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\end{enumerate}
+
+\item Un fluido fluye a una velocidad de $8\,\text{m/s}$ en dirección noroeste ($\nwarrow$). ¿Cuál es la velocidad en las direcciones este y norte?
+
+\item En un sistema de tuberías de una plataforma offshore, una fuerza de $400\,\text{N}$ actúa hacia el oeste ($\leftarrow$) y otra fuerza de $300\,\text{N}$ actúa hacia el norte ($\uparrow$). ¿Cuál es la fuerza resultante en el sistema de tuberías? Describir componentes, módulo y dirección.
+
+\item Un buque petrolero avanza a $12\,\text{m/s}$ hacia el este ($\rightarrow$) y se encuentra con una corriente marina que va a $5\,\text{m/s}$ hacia el norte ($\uparrow$). ¿Cuál es la velocidad resultante del buque? Indicar componentes, módulo y dirección.
+
+\item En cada caso, calcular el producto escalar entre los vectores $\vec u$ y $\vec v$, sabiendo que:
+\begin{itemize}
+\begin{minipage}{.35\textwidth}
+\item[a)] $\vec u=(4,-3)$ y $\vec v=(-2,5)$.
+\end{minipage}\quad\begin{minipage}{.6\textwidth}
+\item[b)] $\|\vec u\|=6$, $\|\vec v\|=5$ y entre ellos se forma un ángulo de $\theta=\dfrac{\pi}{6}$.
+\end{minipage}
+\end{itemize}
+
+\item Dados los vectores $\vec a=(-3,\alpha)$ y $\vec b=(\beta,2)$, hallar el valor de $\alpha$ y $\beta$ sabiendo que $\vec a\cdot\vec b=5$ y $\|\vec a\|=5$.
+
+\item Dado un cubo donde la longitud de su arista es de $2\,\text{m}$.
+\begin{itemize}
+\item[a)] Determinar la longitud de una de sus diagonales principales.
+\item[b)] Calcular el ángulo que forma ésta con la diagonal de su base.
+\end{itemize}
+
+\item En cada caso, hallar el ángulo que forman los vectores $\vec r$ y $\vec s$ y hallar el vector $\operatorname{Proy}_{\vec s}\vec r$:
+\begin{enumerate}
+\begin{multicols}{3}
+\item $\vec r=(2,0)$ y $\vec s=(1,\sqrt3)$.
+\item $\vec r=(1,2,2)$ y $\vec s=(2,1,-2)$.
+\item $\vec r=(2,-1,2)$ y $\vec s=(1,2,2)$.
+\end{multicols}
+\end{enumerate}
+
+\item En Física se considera al {\bf trabajo ($W$)} realizado sobre una partícula por una fuerza $\vec F$ aplicada en un desplazamiento $\vec r$ como $W=\vec F\cdot\vec r$.
+\begin{itemize}
+\item[a)] Calcular el trabajo realizado por la fuerza de componentes $(2,-1,3)$ al desplazar un sólido desde un punto $A=(1,0,-2)$ hasta $B=(3,-2,1)$.
+\item[b)] Si una fuerza aplicada a un sólido que se desplaza una cierta distancia realizó un trabajo nulo, ¿qué puede decir de las direcciones de los vectores que representan la fuerza y el desplazamiento?
+\item[c)] Determinar el trabajo realizado por una fuerza de $10\,\text{N}$ que actúa en la dirección del vector $\vec u=(3,4)$ al mover un objeto desde $P=(0,0)$ hasta $Q=(6,0)$.
+\end{itemize}
+
+\item Sea el vector $\vec u=(5,-12)$. Hallar otro vector:
+\begin{enumerate}[a)]
+\item Perpendicular y con el mismo módulo que el vector dado.
+\item Ortogonal al vector dado y que tenga módulo diez.
+\end{enumerate}
+
+\item Dados los vectores $\vec u=(1,0,2)$ y $\vec v=(2,-1,1)$:
+\begin{itemize}
+\item[a)] Hallar un vector perpendicular a ambos.
+\item[b)] Hallar todos los vectores perpendiculares a ambos.
+\item[c)] Hallar un vector perpendicular a ambos y de módulo igual a siete. ¿Es único este vector?
+\end{itemize}
+
+\item Sean los vectores $\vec v=(a-2,3,-6)$ y $\vec w=(2b-4,-6,12)$, determinar el o los valores de $a\in\mathbb{R}$ y $b\in\mathbb{R}$ para que los vectores $\vec v$ y $\vec w$ sean paralelos. Resolver de dos maneras diferentes.
+
+\item Sabiendo que $\vec u\times\vec v=(2,-4,1)$, hallar el vector $\vec v\times\vec u$.
+
+\item Dados los vectores $\vec a=2\iv+x\jv-\kv$ y $\vec b=\iv+2\jv$, hallar todos los valores de $x\in\mathbb{R}$ para que el área del paralelogramo determinado por ellos sea $3\,\text{u}^2$.
+
+\item Utilizando la norma del producto vectorial entre vectores, obtener el valor de la superficie total del siguiente cuerpo, donde $a>0$:
+
+\begin{center}
+\begin{tikzpicture}[line join=round,line cap=round,scale=.75,x={(.9cm,-.25cm)},y={(.55cm,.35cm)},z={(0cm,.85cm)},>=triangle 45]
+\coordinate (A) at (0,0,0);\coordinate (B) at (5,0,0);\coordinate (C) at (0,2,0);\coordinate (D) at (5,2,0);
+\coordinate (E) at (0,0,3);\coordinate (F) at (5,0,3);
+\draw[->] (0,0,0)--(6,0,0) node[right]{$x$};
+\draw[->] (0,0,0)--(0,3,0) node[above]{$y$};
+\draw[->] (0,0,0)--(0,0,4) node[above]{$z$};
+\draw[thick] (A)--(B)--(D)--(C)--cycle;
+\draw[thick] (A)--(E)--(F)--(B);
+\draw[thick] (C)--(E);
+\draw[thick] (D)--(F);
+\draw[dashed] (C)--(D);
+\node[below] at (B){$5a$};
+\node[left] at (C){$2a$};
+\node[left] at (E){$3a$};
+\end{tikzpicture}
+\end{center}
+
+\item \begin{itemize}
+\item[a)] Determinar si los puntos dados son coplanares: $A=(0,1,2)$, $B=(1,3,1)$, $C=(2,0,4)$, $D=(4,4,1)$.
+\item[b)] Dados tres vectores $\vec u=\iv-2\jv+3\kv$, $\vec v=\alpha\iv+\jv-\kv$ y $\vec w=2\iv+\kv$, hallar el valor de $\alpha\in\mathbb{R}$ de modo tal que los vectores resulten coplanares.
+\end{itemize}
+
+\item En cada caso, dados los vectores $\vec u$, $\vec v$ y $\vec w$, calcular:
+\begin{itemize}
+\item[a)] El volumen del paralelepípedo que ellos determinan.
+\item[b)] El área del paralelogramo que forman los vectores $\vec v$ y $\vec w$.
+\item[c)] La altura y el vector altura correspondientes al paralelepípedo cuya base está formada por los vectores $\vec v$ y $\vec w$.
+\begin{itemize}
+\item[i)] $\vec u=(1,2,3)$, $\vec v=(2,0,1)$ y $\vec w=(1,3,0)$.
+\item[ii)] $\vec u=(2,-2,3)$, $\vec v=(1,0,2)$ y $\vec w=(0,2,1)$.
+\end{itemize}
+\end{itemize}
+
+\end{enumerate}
+\end{document}

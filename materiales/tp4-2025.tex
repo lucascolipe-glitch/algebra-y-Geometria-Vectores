@@ -1,0 +1,1247 @@
+\documentclass[11pt]{article}
+
+
+\usepackage[inline]{asymptote}
+\usepackage{asypictureB}
+%\usepackage[default]{frcursive}
+\usepackage[a4paper,text={17.5cm,25.4cm},centering,top=2.1cm]{geometry} 
+\usepackage{amsfonts}
+%\usepackage{amsmath}
+\usepackage{amssymb,amsmath,stackrel,mathrsfs} %wasysym
+\usepackage{multicol}
+\usepackage{pdflscape}% girar una pagina, hay que usar \begin{landscape}En este punto inicia la hoja en vertical \end{landscape}
+%\usepackage[mathcal]{euscript}
+%\usepackage{amssymb}
+\usepackage{esvect}%para la flecha de vector 
+
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+%\usepackage[latin1,ansinew]{inputenc}\usepackage{calligra}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{etex}
+\usepackage{calligra}
+\usepackage{array}
+ \usepackage{booktabs}
+ \usepackage{ifsym}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{tkz-graph}%paquete (di)grafos
+\usepackage{tkz-euclide}% Para realizar diagramas que coloreen conjuntos
+\usetikzlibrary[decorations.text]% Decorar curvas
+%\usetikzlibrary{matrix}
+\usetikzlibrary{arrows,matrix}
+%\usetkzobj{all}
+
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{makecell} %Paquete para controlar altura de celdas
+\usepackage{verbatim} 
+\usetikzlibrary{babel}%para no general error al usar babel y tikz simultaneamente.
+\usetikzlibrary{patterns,patterns.meta}%%%%%%%%%%%para  pintar de forma rrallada un rectangulo
+
+\usepackage{pictex}
+\usepackage{verbatim}%me sirve para usar comentarios con mucha lineas 
+\usepackage{amstext}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{mathdots}% para tener mas opciones de puntos suspensivos
+
+%\usepackage{pgf,tikz}%,pgfplots
+%\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+%\usetikzlibrary{arrows}
+%\usepackage{etex,tkz-euclide} 
+%\usetkzobj{all}
+\usepackage{color}
+
+\usepackage{cancel}
+\newcommand{\Cancelar}[2][black]{{\color{#1}\cancel{\color{black}#2}}}%%% para cancelar con colores recordar usar mayusculas
+\usepackage{lscape}%paquete para girar hojas
+
+
+\usepackage{bm}
+
+
+
+
+
+
+
+
+
+\newcommand{\dis}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\re}{\mathbb{R}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+%\newcommand{\B}{\mathcal{B}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\can}{\mathcal{C}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\Pol}{\mathcal{P}}
+
+\newcommand{\iv}{\bm{\check{\imath}}}
+\newcommand{\jv}{\bm{\check{\jmath}}}
+\newcommand{\kv}{\check{\bm k}}
+\newcommand{\moduloprop}{\hookrightarrow_{\hspace{-2.5mm}\mbox{\tiny$^{_\neq}$}}}
+
+\newtheorem{ejer}{Ejercicio}[]
+
+\newtheorem{teo}{Teorema}%[section]
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{propo}[teo]{Proposición}
+\newtheorem{defi}[teo]{Definición}
+\newtheorem{ejem}[teo]{}
+\newtheorem*{ejemsinn}{}
+\newtheorem{obs}[teo]{Observación}%[section]
+\newtheorem{acla}{Aclaración}%[section]
+\newtheorem{act}{Actividad}%%%%%%%%%%%%%%%%
+\newtheorem*{defsinn}{{\bf Definición}:}
+\newtheorem*{ejemplosinn}{{\bf Ejemplo}:}
+\newtheorem*{proposinn}{{\bf\sc Proposición}}
+\newtheorem*{obssinn}{Observación:}
+\newtheorem*{corosinn}{Corolario}
+\newtheorem*{propsinn}{Propiedades:}
+%\newenvironment{proof} { \noindent {\bf Demostración: }\rm}{$\quad \hfill \blacksquare $}
+\usepackage{setspace} % (es una alternativa a \renewcommand{\baselinestretch}{1.3}) usando \doublespacing \onehalfspace \singlespace \spacing{1.5}  se va cambiando segun uno quiera
+\spacing{1.3}
+
+%\newenvironment{proof}[Demostración:]
+\newenvironment{sol}{ \noindent {\bf Solución:} \rm}{%\hfill \protect\tikz[overlay,yshift=-4pt]\protect\node[xshift=8mm, yshift=13mm, blue]() {\huge $\checkmark$ };
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\renewcommand{\baselinestretch}{1.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[framemethod=TikZ]{mdframed}%Paquete para estilos de los bordes de los ambientes Importante este paquete (mdframed) define un entorno  que trata automáticamente los saltos de página en el texto enmarcado.
+            \mdfsetup{skipabove=1\baselineskip, skipbelow=1.5\baselineskip ,             frametitlefont= \sffamily\bfseries , needspace=4\baselineskip , splittopskip=1.5\baselineskip} %
+            \mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Estilo para Cuentas auxiliares
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mdfdefinestyle{Cuentaauxi}{%skipabove=10pt, skipbelow=0,
+userdefinedwidth=1.02\textwidth,align=center,
+  everyline=true,
+  ignorelastdescenders=true,
+  middlelinewidth=1pt,
+  linecolor=black!20,
+  outerlinewidth=1pt,
+  %leftline=false,topline=false
+  %rightline=false,bottomline=false,
+  %backgroundcolor=black!20,
+  innerleftmargin=2mm, innerrightmargin=2mm,
+  innerbottommargin=3mm,
+  innertopmargin=1mm,
+  frametitleaboveskip=2mm,
+  frametitlebelowskip=2mm,
+  %frametitlerule=false,
+  %repeatframetitle=false,
+ % outerlinewidth=6pt,outerlinecolor=blue!20,
+ pstricksappsetting={\addtopsstyle{mdfouterlinestyle}{linestyle=dashed}},
+ %firstextra={\node[xshift=5cm,right,draw=White, line width=1.5pt,%star,star points=10,star point ratio=1.2, 
+ %minimum size=15mm, fill=white] at (P-|O) {\tikzpicture\draw[draw=black!20,decoration=snake, fill=white] (0,0) --(2.5,0) decorate{--(2.5,1)}--(0,1)decorate{--cycle};%\includegraphics[width=10mm]{.pdf}
+ %  \endtikzpicture
+ %}; },
+ %singleextra={\node[xshift=5cm,right,draw=White, line width=1.5pt,%star,star points=10,star point ratio=1.2, minimum size=15mm,
+  %fill=white] at (P-|O) {\tikzpicture\draw[draw=black!20,decoration=snake, fill=white] (0,0) --(2.5,0) decorate{--(2.5,1)}--(0,1)decorate{--cycle};%\includegraphics[width=10mm]{.pdf}    
+ %  \endtikzpicture
+ %}; }
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Estilo para Citar
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mdfdefinestyle{citar}{
+userdefinedwidth=.83\textwidth ,align=center,
+skipabove=5pt, skipbelow=5pt,
+  everyline=true,
+  ignorelastdescenders=true,
+  middlelinewidth=1pt,
+  linecolor=blue!60,
+  outerlinewidth=2pt,
+  %leftline=false,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  %backgroundcolor=black!20,
+  innerleftmargin=5mm, innerrightmargin=5mm,
+  innerbottommargin=3mm,
+  innertopmargin=1mm,
+  leftmargin= 14mm,
+  %frametitleaboveskip=2mm,
+  %frametitlebelowskip=2mm,
+  %frametitlerule=false,
+  %repeatframetitle=false,
+ % outerlinewidth=6pt,outerlinecolor=blue!20,
+ pstricksappsetting={\addtopsstyle{mdfouterlinestyle}{linestyle=dashed}},
+ %firstextra={\node[xshift=5cm,right,draw=White, line width=1.5pt,%star,star points=10,star point ratio=1.2, 
+ %minimum size=15mm, fill=white] at (P-|O) {\tikzpicture\draw[draw=black!20,decoration=snake, fill=white] (0,0) --(2.5,0) decorate{--(2.5,1)}--(0,1)decorate{--cycle};%\includegraphics[width=10mm]{.pdf}
+ %  \endtikzpicture
+ %}; },
+ %singleextra={\node[xshift=5cm,right,draw=White, line width=1.5pt,%star,star points=10,star point ratio=1.2, minimum size=15mm,
+  %fill=white] at (P-|O) {\tikzpicture\draw[draw=black!20,decoration=snake, fill=white] (0,0) --(2.5,0) decorate{--(2.5,1)}--(0,1)decorate{--cycle};%\includegraphics[width=10mm]{.pdf}    
+ %  \endtikzpicture
+ %}; }
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Dem}{\protect\tikz[overlay,yshift=-4pt]\protect\draw[line width=1.5pt,line cap=round,color=gray] (0,0)[out=14,in=180] to node [shift=(90:6.pt),color=black] {\large\bf Dem:} (7:1); \qquad \quad }
+\DeclareRobustCommand{\michi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[1]{\raisebox{\depth}{\large$#1\chi$}} % inner command, used by \rchi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% comando aclaraciones  
+
+\newcommand{\aclaracion}[2]{
+
+\begin{center}
+\definecolor{gris}{rgb}{0.5,0.5,0.5}
+\begin{tikzpicture}[line cap=round,line join=round,scale=1]
+%\draw [color=gris,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (0.1,0.1) grid (6.3,6.3);
+%\draw[color=black] (0.,0.) -- (\linewidth,0.);
+\node at (.23,{.9*#2}) [color=black,above right] {\bf #1};
+\foreach \y in {1,2,...,#2}
+\draw[shift={(0,{.9*\y})},color=gris,opacity=.5] (0.,0.) -- ({.99*\linewidth},0.);
+\end{tikzpicture} 
+\end{center}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% comando respuesta 
+
+\newcommand{\res}[1]{
+
+\begin{center}
+\definecolor{gris}{rgb}{0.5,0.5,0.5}
+\begin{tikzpicture}[line cap=round,line join=round,scale=1]
+%\draw [color=gris,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (0.1,0.1) grid (6.3,6.3);
+%\draw[color=black] (0.,0.) -- (\linewidth,0.);
+\node at (.23,{.9*#1}) [color=black,above right] {\bf respuesta:};
+\foreach \y in {1,2,...,#1}
+\draw[shift={(0,{.9*\y})},color=gris,opacity=.5] (0.,0.) -- ({.99*\linewidth},0.);
+\end{tikzpicture} 
+\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% comando ejemplo para completar 
+
+\newcommand{\ejparacompletar}[1]{
+
+\begin{center}
+\definecolor{gris}{rgb}{0.5,0.5,0.5}
+\begin{tikzpicture}[line cap=round,line join=round,scale=1]
+%\draw [color=gris,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (0.1,0.1) grid (6.3,6.3);
+%\draw[color=black] (0.,0.) -- (\linewidth,0.);
+\node at (.23,{.9*#1}) [color=black,above right] {\bf Ejemplo:};
+\foreach \y in {1,2,...,#1}
+\draw[shift={(0,{.9*\y})},color=gris,opacity=.5] (0.,0.) -- ({.99*\linewidth},0.);
+\end{tikzpicture} 
+\end{center}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% comando conclusión 
+
+\newcommand{\conclus}[1]{
+
+\begin{center}
+\definecolor{gris}{rgb}{0.5,0.5,0.5}
+\begin{tikzpicture}[line cap=round,line join=round,scale=1]
+%\draw [color=gris,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (0.1,0.1) grid (6.3,6.3);
+%\draw[color=black] (0.,0.) -- (\linewidth,0.);
+\node at (.23,{.9*#1}) [color=black,above right] {\bf Conclusión:};
+\foreach \y in {1,2,...,#1}
+\draw[shift={(0,{.9*\y})},color=gris,opacity=.5] (0.,0.) -- ({.99*\linewidth},0.);
+\end{tikzpicture} 
+\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% boton calculadora 
+
+\newcommand{\boton}[2]{
+\tikzpicture{  \node[draw,color=#1,fill=#1,text=white,,rounded corners=3mm,text width=7mm,text height =3mm,align=center,midway]  at (0,0) { \large \bf #2 };
+}
+\endtikzpicture
+}
+
+\usepackage[framemethod=TikZ]{mdframed}%Paquete para estilos de los bordes de los ambientes Importante este paquete (mdframed) define un entorno  que trata automáticamente los saltos de página en el texto enmarcado.
+            \mdfsetup{skipabove=2\baselineskip,skipbelow=2\baselineskip,frametitlefont=\sffamily\bfseries, needspace=4\baselineskip, splittopskip=1.5\baselineskip} 
+            \mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}} 
+            
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Estilo  para cajas
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mdfdefinestyle{teoSty}{backgroundcolor=blue!10, linecolor=blue, linewidth=3pt,
+skipabove=4pt,
+skipbelow=3pt, 
+innerleftmargin=3ex, innerrightmargin=3ex, innertopmargin=3mm, innerbottommargin=3mm, innermargin=15pt, outermargin=-15pt, needspace={0.2\textheight},roundcorner=10pt}
+
+\mdfdefinestyle{ObsSty}{backgroundcolor=red!10, linecolor=red, linewidth=2pt,
+skipabove=4pt,
+skipbelow=3pt, 
+innerleftmargin=3ex, innerrightmargin=3ex, innertopmargin=3mm, innerbottommargin=3mm, innermargin=5pt, outermargin=-5pt, needspace={0.2\textheight},roundcorner=10pt}
+
+\mdfdefinestyle{EjerSty}{backgroundcolor=blue!5!green!5!, linecolor=blue!50!green!50!, linewidth=2pt,
+skipabove=4pt,
+skipbelow=3pt, 
+innerleftmargin=3ex, innerrightmargin=3ex, innertopmargin=3mm, innerbottommargin=3mm, innermargin=5pt, outermargin=-5pt, needspace={0.2\textheight},roundcorner=10pt}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Estilo  para lineas de relleno usando el paquete patterns y la libreria  patterns.meta
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzdeclarepattern{
+  name=mylines,
+  parameters={
+      \pgfkeysvalueof{/pgf/pattern keys/size},
+      \pgfkeysvalueof{/pgf/pattern keys/angle},
+      \pgfkeysvalueof{/pgf/pattern keys/line width},
+  },
+  bounding box={
+    (0,-0.5*\pgfkeysvalueof{/pgf/pattern keys/line width}) and
+    (\pgfkeysvalueof{/pgf/pattern keys/size},
+0.5*\pgfkeysvalueof{/pgf/pattern keys/line width})},
+  tile size={(\pgfkeysvalueof{/pgf/pattern keys/size},
+\pgfkeysvalueof{/pgf/pattern keys/size})},
+  tile transformation={rotate=\pgfkeysvalueof{/pgf/pattern keys/angle}},
+  defaults={
+    size/.initial=5pt,
+    angle/.initial=45,
+    line width/.initial=.4pt,
+  },
+  code={
+      \draw [line width=\pgfkeysvalueof{/pgf/pattern keys/line width}]
+        (0,0) -- (\pgfkeysvalueof{/pgf/pattern keys/size},0);
+  },
+}
+
+
+
+
+
+\newcommand{\semejante}[1]{\stackrel[#1]{}{\longleftrightarrow}}% \thicksim para decir la Semejanza de matrices la variable #1  indica la operacion elemental 
+\newcommand{\OptipoUno}[1]{\stackrel[#1]{}{=}}
+
+
+
+\newcommand{\indicador}[4]{
+{\tikz[remember picture,overlay]\coordinate (#1) at #2;}{\tikz[remember picture,overlay]\coordinate (#3) at #4;} 
+}
+
+\newcommand{\marka}[2]{
+{\tikz[remember picture,overlay]\coordinate (#1) at #2;}
+}
+
+
+
+
+\newcommand{\cof}{ \mbox{cof}}
+
+\newcommand{\paralela}{\rotatebox[origin=c]{-10}{\Large$\parallel$}}
+
+\usepackage{fancyhdr}
+\fancypagestyle{miestilo}{
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{pág. \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+\renewcommand{\footrulewidth}{1pt}
+\pagestyle{fancy}\markboth{}{}
+\renewcommand{\headrulewidth}{.05pt}
+\renewcommand{\headrule}{{\color{gray}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+\renewcommand{\footrule}{{\color{gray}%
+\vskip-\footruleskip\vskip-\footrulewidth
+\hrule width\headwidth height\footrulewidth\vskip\footruleskip}}
+\renewcommand{\footrulewidth}{.50pt}
+\fancyhead[L]{\color{gray}{\footnotesize \sc  \materia} }
+\fancyhead[C]{}
+\fancyhead[R]{\color{gray}{\sc \footnotesize  Universidad Nacional Del Comahue}}
+\fancyfoot[R]{pág. \thepage}
+\fancyfoot[C]{}
+\setlength{\headheight}{15pt}
+
+%\usepackage{wrapfig}
+
+\newcommand{\co}{\mathbb{C}}
+%\newcommand{\re}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\z}{\mathbb{Z}}
+\newcommand{\n}{\mathbb{N}}
+\newcommand{\ve}{\mathbb{V}}
+\newcommand{\w}{\mathbb{W}}
+\newcommand{\be}{{\cal B}}
+\newcommand{\ca}{{\cal C}}
+\newcommand{\pqx}{\mathbb{Q}[x]}
+\newcommand{\prx}{\mathbb{R}[x]}
+\newcommand{\pcx}{\mathbb{C}[x]}
+%\newcommand{\izg}{\big\langle}
+%\newcommand{\rangle}{\big\rangle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\newcommand{\materia}{\sc Álgebra y Geometría I}%separadas con '&'
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% se define el encabezado, 
+% el parametro es el texto que va despues de: trabajo practico $N^\circ$... (agregar numero y titulo)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\newcommand{\encabezado}[1]{%
+\fancyfoot[L]{\vspace*{-3.5mm}\color{gray}{\small T. P. 4: Vectores}}
+\thispagestyle{miestilo} 
+\newcommand{\encabezado}[1]{%
+\fancyfoot[L]{\vspace*{-3.5mm}\color{gray}{\small T. P. #1}}
+%\thispagestyle{miestilo}%
+%--------------------logodpto //texto // logouni------------------
+%--------------------logodpto------------------
+
+\vspace*{-18mm}\hspace*{-11mm} \begin{minipage}{2.7cm}
+\begin{center} 
+     \includegraphics[width=2.7cm, height=2.7cm]{logodpto}
+\end{center}  
+\end{minipage}\hspace*{-15mm} \begin{minipage}{15.9cm}
+\begin{center}
+\begin{tabular}{c @{ - } c}
+ \materia \\
+\carreras
+\end{tabular}
+
+\cuatri
+
+\medskip
+
+TRABAJO PRÁCTICO N$^\circ$#1 
+
+\end{center}
+
+\end{minipage}\hspace{-14mm} \begin{minipage}{2.5cm}
+  \begin{center} 
+    \includegraphics[width=2.5cm, height=2.5cm]{logouni}
+  \end{center}  
+\end{minipage}
+%-----------------------------------------------------
+
+%----------------------------------------------------------------
+\hrule
+%---------------------------------------------------------------
+}%%
+
+
+
+\pagestyle{fancy}
+\def\identacion{-2.5mm}%mueve la identacion de la enumeracion de los ejercicios.
+
+
+\usepackage{asypictureB}
+\begin{asyheader}
+settings.outformat="png";
+settings.render=8;
+import graph3;
+import smoothcontour3;
+
+pen bpen = rgb(0.75, 0.07, 0.01);
+//material m = material(diffusepen=0.7bpen, ambientpen=bpen+opacity(0.8), emissivepen=0.3*bpen,specularpen=0.999white, shininess=1.0);      
+\end{asyheader}
+
+
+\usepackage{multicol}
+\setlength{\columnsep}{7mm}
+
+
+
+
+\begin{document}
+
+
+\setlength{\headheight}{15pt}
+
+\vspace*{-2.5cm}
+%--------------------logodpto------------------
+\begin{figure}[htbp]
+  \begin{minipage}[r][][t]{0.15\textwidth}
+\begin{center} 
+ % Universidad Nacional del Comahue.  
+ \includegraphics[width=2.2cm, height=2.2cm]{imagen/inglogo.jpg}
+\vspace{1.8cm}
+\end{center}  
+\end{minipage}\quad
+% texto central
+\begin{minipage}[r][][t]{0.31\textwidth}
+\begin{center}
+\vspace*{-25mm}
+{\bf \materia }\\[2mm]
+{\bf Módulo 4}
+\end{center}
+\end{minipage}\quad\begin{minipage}[r][][t]{0.31\textwidth}
+\begin{center}
+\vspace*{-25mm}
+\textit{Ingeniería en Petróleo} \\[2mm]
+Primer Cuatrimestre 2026
+\end{center}
+\end{minipage}\quad
+%----------------------logouni-------------------------
+\begin{minipage}[r][][t]{0.15\textwidth}
+  \begin{center} 
+     \includegraphics[width=2.2cm, height=2.2cm]{imagen/Logo_UNco.jpg}
+     \vspace{1.8cm}
+  \end{center}  
+\end{minipage}
+%-----------------------------------------------------
+\end{figure}
+\vspace*{-33mm}
+
+\begin{center}
+{\bf \Large{ Trabajo Práctico 4: Vectores. }}
+\end{center}
+
+
+
+%{\bf{Importante: Recordar que hay ejemplos resueltos tanto en teoría como en el archivo ejercicios modelo que te ayudarán a desarrollar este trabajo práctico.}}
+
+
+\begin{enumerate}[\hspace{-3mm}$1)$]
+
+\item  Dados el vector $\overrightarrow{PQ}$ y los puntos $A$ y $B$, en el siguiente sistema de ejes cartesianos, encontrar gráficamente:
+
+
+
+
+
+
+
+\begin{center}
+    
+
+
+
+\definecolor{rojo}{rgb}{0.7,0.4,0.4}
+\definecolor{azul}{rgb}{.4,.4,0.9}
+ 
+\definecolor{gris}{rgb}{0.5,0.5,0.5}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,scale=.9]
+
+% extremos para los ejes
+\xdef\ext{6}
+\xdef\f{-2}
+\pgfmathtruncatemacro{\c}{\f+1}
+\draw[->] (\f-.3,0) -- (12+.3,0) ;
+
+\draw[->] (0,\f-.3) -- (0,\ext+.3) ;
+\draw [color=gris!30!,dash pattern=on 1pt off 1pt, xstep=1cm,ystep=1cm] (\f-.3,\f-.3) grid (12.3,\ext+.3);
+
+\foreach \x in {\f,...,-1,1,2,...,12}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\tiny $\x$};
+
+\foreach \y in {\f,...,-1,1,2,...,\ext }
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\tiny $\y$};
+
+
+%\clip(-3.2,-1.3) rectangle (3.45,4.3);
+
+\coordinate (A) at (6,-2);
+\coordinate (B) at (2,4);
+\coordinate (P) at (4,2);
+\coordinate (Q) at (7,4); 
+\xdef\ang{80}
+
+
+%%%%%Grafico de los puntos
+\draw[fill=black] (P) circle (1.5pt) node[shift=(-\ang: 5pt),right] {\scriptsize $P=(-2,1)$};
+
+\draw[fill=black] (Q) circle (1.5pt) node[shift=(\ang: 5pt),right] {\scriptsize $Q=(1,1)$};
+
+\draw[fill=black] (A) circle (1.5pt) node[shift=(\ang: 5pt),right] {\scriptsize $A=(-1,2)$};
+
+\draw[fill=black] (B) circle (1.5pt) node[shift=(\ang: 5pt),right] {\scriptsize $B=(3,-1)$};
+
+
+%vectores
+\draw [->,line width=1.5pt, color=blue] (P) -- (Q);
+
+
+
+\end{tikzpicture}
+  
+\end{center}  
+
+
+   \begin{itemize}
+        \item[a)] Un vector $\vec{v}$ equivalente al vector $\overrightarrow{PQ}$ con origen en el punto $(0, 0)$.
+        \item[b)] Un vector, con origen en el punto $A$, que tenga igual dirección y el doble de longitud que el vector $\vec{v}$. ¿Es único? ¿Por qué?
+        \item[c)] Un vector $\vec{z}$, con origen en el punto $B$, de igual dirección, sentido opuesto y la mitad de la longitud que $\vec{v}$.
+        \item[d)] Un vector simétrico al vector $\vec{v}$ con respecto al eje $x$ y otro vector simétrico con respecto al eje $y$.
+    \end{itemize}
+
+
+
+
+
+
+\item Dados los vectores pertenecientes a $\mathbb{R}^2$, $\vec{u} = (6, 4)$, $\vec{v} = (-4, 2)$ y $\vec{w} = (-3, -2)$:
+
+    \begin{enumerate}[a)] 
+        \item Representarlos en un mismo sistema de ejes cartesianos.
+        \item Calcular analítica y gráficamente las siguientes operaciones:
+            \begin{enumerate}[i)]
+            \begin{multicols}{3}            
+                \item $\vec{w} + 2\vec{v}$.
+                \item $-\tfrac{1}{2}\vec{u} + \vec{v}$.
+                \item $\tfrac{1}{2}(\vec{v} + \vec{u})$.
+                \item $-\vec{v} + \vec{w}$.
+                \item $\tfrac{1}{2}\vec{v} + \tfrac{1}{2}\vec{u}$.
+                \item $\vec{u} + 3\vec{v} - \vec{w}$.
+            \end{multicols}
+            \end{enumerate}
+        \item ¿Qué propiedad relaciona los incisos {\scriptsize$III)$ }y {\scriptsize$V)$}?
+    \end{enumerate}
+
+
+
+
+
+
+
+
+
+\item  Dados los vectores $\vec{v} = (4, -8, 1)$, $\vec{w} = \left(\frac{1}{10}, 0, -1\right)$ y $\vec{z} = (-4, 2, 0)$:
+
+    \begin{enumerate}[a)]
+        \item Calcular analíticamente cada una de las operaciones que se indican:
+            \begin{enumerate}[i)]
+                \item $3(\vec{v} - 2\vec{w})$.
+                \item $-2\left(\frac{1}{2}\vec{z} + \vec{v}\right) - 3\vec{w}$.
+            \end{enumerate}
+        \item Determinar las componentes del vector $\vec{u}$ que satisfaga: $2\vec{v} - \vec{u} + 3\vec{z} = \vec{w} - 5\vec{u}$.
+    \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item Determinar la respuesta correcta: Los siete vectores de la figura unen el centro de una circunferencia con algún punto de la misma. Si sumamos estos siete vectores el resultado:
+
+
+
+
+\begin{minipage}{.6\textwidth}
+\begin{center}
+\begin{tikzpicture}[,>=triangle 45,rotate=-30]
+    % Círculo exterior
+    \xdef\r{2.1}
+    \draw[dashed] (0,0) circle(\r cm);
+    
+    % Vectores y etiquetas
+    \foreach \angle/\label in {0/$\vec{t}$, 90/$\vec{m}$, 135/$\vec{n}$, 180/$\vec{u}$, 225/$\vec{p}$, 270/$\vec{q}$, 315/$\vec{r}$} {
+        \draw[->, thick] (0,0) -- (\angle:\r cm) node[pos=1.15] {\label};
+    }
+    
+    % Etiquetas de los ángulos
+    \foreach \angle in {100, 152, 202, 247 , 292} {
+        \draw (\angle:.55cm) node[shift=(\angle: 5pt)]{\tiny $45^\circ$};
+    }
+    
+    % Punto central
+    \fill[blue] (0,0) circle(2pt);
+
+    %angulos
+    \draw[dashed] (0,0) ++(90:0.4) arc[start angle=90, end angle=360, radius=0.4cm];
+
+    \draw[thick] (.3,0)--(.3,.3)--(0,.3);
+
+\end{tikzpicture}
+
+    
+\end{center}
+ \end{minipage}\quad\begin{minipage}{.38\textwidth}
+
+
+    \begin{itemize}
+        \item[a)] Es igual a $-\vec{p}$.
+        \item[b)] Es igual a $\vec{m} + \vec{q}$.
+        \item[c)] Es igual a $\vec{p}$.
+        \item[d)] Es igual al vector nulo.
+        \item[e)] No es ninguna de las opciones anteriores.
+    \end{itemize}
+\end{minipage}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  Determinar las componentes del vector $\vec{v}$ que tiene a los puntos $P$ como origen y $Q$ como extremo en cada uno de los siguientes casos:
+
+    \begin{enumerate}[a) ] 
+    \begin{multicols}{2}
+        \item  $P = (-4, 3)$ y $Q = (1, -2)$.
+        \item  $P = (2, -1, 3)$ \  y \ $Q = (4, -3, -5)$.
+    \end{multicols}
+    \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  Siendo $A = (1, 3, 1)$, $B = (1, 2, 1)$ y $C = (0, 0, 2)$ puntos pertenecientes a $\mathbb{R}^3$. Hallar:
+
+    \begin{itemize}
+        \item[a)] El punto $D$ tal que $\overrightarrow{AD}$ resulte equivalente al vector $\overrightarrow{BC}$.
+        \item[b)] Un punto $M$ tal que el vector $\overrightarrow{CM}$ resulte paralelo al vector $\overrightarrow{AB}$. ¿Es único el punto encontrado? ¿Por qué?
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\item  Dados los vectores $\vec{a} = \left(1, \frac{4}{3}\right)$, $\vec{b} = (-3, 2)$ y $\vec{c} = \left(\sqrt{3}, \sqrt{3}, \sqrt{3}\right)$, calcular:
+
+    \begin{itemize}
+    \begin{multicols}{4}
+        \item[a)] $\|\vec{a}\|$.
+        \item[b)] $\| -\vec{a}\|$.
+        \item[c)] $\|\vec{b} - \vec{a}\|$.
+        \item[d)] $\| -2\vec{c}\|$.
+    \end{multicols}
+    \end{itemize}
+ 
+
+
+
+
+
+
+
+
+\item  Determinar todos los valores de $k \in \mathbb{R}$ para los cuales resulta:
+
+    \begin{itemize}
+    \begin{multicols}{2}
+        \item[a)] $\|\vec{v}\| = 2$, siendo $\vec{v} = (1, k, 0)$.
+        \item[b)] $\|\vec{v}\| = 1$, siendo $\vec{v} = k(2, 2, 1)$.
+    \end{multicols}
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\item  Calcular la distancia entre los puntos $P$ y $Q$ en cada caso:
+
+    \begin{enumerate}[a) ]
+    \begin{multicols}{2}
+        \item $P = (-1, -2)$ y $Q = (1, 3)$.
+        \item $P = (1, -1, 2)$ y $Q = (-3, 1, -2)$.
+    \end{multicols}
+    \end{enumerate}
+
+
+
+
+
+
+    
+
+\item  Sean los vectores $\vec{u} = (3, 0, 1)$ y $\vec{p} = (1, -1, 0)$, hallar:
+
+    \begin{itemize}
+        \item[a)] Un vector paralelo a $\vec{p}$ que tenga norma cinco. ¿Cuántos vectores existen con estas condiciones?
+        \item[b)] El vector opuesto a $\frac{1}{2}\vec{u}$.
+        \item[c)] Un versor paralelo a $(\vec{u} + \vec{p})$ y con sentido contrario.
+    \end{itemize}
+
+
+
+
+
+
+
+
+\item  Expresar los siguientes vectores como descomposición en las direcciones de los versores canónicos correspondientes:
+
+    \begin{itemize}
+    \begin{multicols}{2}
+        \item[a)] $\vec{u} = \left(-2, \frac{4}{3}\right)$.
+        \item[b)] $\vec{v} = (-1, 3, -4)$.
+    \end{multicols}
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  Dado el vector $\vec{u}$ del siguiente gráfico. Encontrar las componentes de dicho vector en la dirección de los vectores canónicos.
+
+
+
+
+\begin{enumerate}[a) ]
+\begin{minipage}{.45\textwidth}
+
+\item \, \vspace{-9mm}
+\begin{center}
+     
+\begin{tikzpicture}[,>=triangle 45,scale=.6]
+    % Configuración inicial
+    \draw[->] (-1,0) -- (5,0) node[below] {$x$}; % Eje x
+    \draw[->] (0,-1) -- (0,5) node[left] {$y$}; % Eje y
+
+    % Vector u
+    \draw[->, thick, blue] (0,0) -- (45:5) node[above right] {$\vec{u}$};
+
+    % Arco del ángulo
+    \draw[thick,->] (1.5,0) arc[start angle=0, end angle=45, radius=1.5cm] node[pos=0.3,shift={({45*.5}:5mm)} ]  {\small $45^\circ$}; 
+
+    % Magnitud del vector
+    \node[left] at (-0.5,2) {\small $\|\vec{u}\|=5$};
+\end{tikzpicture}
+
+
+\end{center}
+%------------------%---------------------%---------%------------------%---------------------%---------%------------------%---------------------%---------%------------------%---------------------%---------%------------------%---------------------%---------
+\end{minipage}\qquad\begin{minipage}{.45\textwidth}
+
+\item \, \vspace{-9mm}
+\begin{center}
+   
+\begin{tikzpicture}[,>=triangle 45,scale=.35]
+    % Configuración inicial
+    \draw[->] (-6,0) -- (4,0) node[below] {$x$}; % Eje x
+    \draw[->] (0,-1) -- (0,10) node[left] {$y$}; % Eje y
+
+    % Vector u
+    \draw[->, thick, blue] (0,0) -- (120:10) node[above right] {$\vec{u}$};
+
+    % Arco del ángulo
+    \draw[thick,->] (2,0) arc[start angle=0, end angle=120, radius=2cm] node[pos=0.3,shift={({120*.5}:5mm)} ]  {\small $120^\circ$}; 
+
+    % Magnitud del vector
+    \node[right] at (60:6) {\small $\|\vec{u}\|=10$};
+\end{tikzpicture}
+
+
+\end{center}
+\end{minipage}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  Un fluido fluye a una velocidad de $5\,\text{m/s}$ en dirección noroeste ($\nwarrow$). ¿Cuál es la velocidad en las direcciones este y norte?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  En un sistema de tuberías de una plataforma offshore, una fuerza de $500\,\text{N}$ actúa hacia el oeste ($\leftarrow$) y otra fuerza de $300\,\text{N}$ actúa hacia el sur ($\downarrow$). ¿Cuál es la fuerza resultante en el sistema de tuberías? (describir componentes, módulo y dirección).
+
+
+
+
+
+
+
+
+
+\item  Un buque petrolero avanza a $10\,\text{m/s}$ hacia el este ($\rightarrow$) y se encuentra con una corriente marina que va a $3\,\text{m/s}$ hacia el sur ($\downarrow$). ¿Cuál es la velocidad resultante del buque? (Indicar componentes, módulo y dirección).
+
+
+
+
+
+
+
+
+
+
+\item  En cada caso, calcular el producto escalar entre los vectores $\vec{u}$ y $\vec{v}$, sabiendo que:
+
+    \begin{itemize}
+    \begin{minipage}{.35\textwidth}
+        \item[a)] $\vec{u} = (5, 1)$ y $\vec{v} = (-8, 3)$.
+
+        
+    \end{minipage}\quad\begin{minipage}{.6\textwidth}
+        \item[b)] $\|\vec{u}\| = 5$, $\|\vec{v}\| = 4$ y entre ellos se forma un ángulo de $\theta = \frac{\pi}{3}$.
+
+        
+    \end{minipage}
+    \end{itemize}
+
+
+
+
+
+
+
+
+\item   Dados los vectores $\vec{a} = (-2, \alpha)$ y $\vec{b} = (\beta, 3)$, hallar el valor de $\alpha$ y $\beta$ sabiendo que $\vec{a} \cdot \vec{b} = 2$ y $\|\vec{a}\| = \sqrt{20}$.
+
+
+
+
+
+
+
+
+
+
+\item Dado un cubo donde la longitud de su arista es de $1\,\text{m}$.
+
+    \begin{itemize}
+        \item[a)] Determinar la longitud de una de sus diagonales principales.
+        \item[b)] Calcular el ángulo que forma ésta con la diagonal de su base.
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+\item En cada caso, hallar el ángulo que forman los vectores $\vec{r}$ y $\vec{s}$ y hallar el vector $\operatorname{Proy}_{\vec{s}} \,\vec{r}$:
+
+    \begin{enumerate}
+    \begin{multicols}{3}
+        \item $\vec{r} = (1, \sqrt{3})$ y $\vec{s} = (-2, 2\sqrt{3})$.
+        \item $\vec{r} = (2, 1, 1)$ y $\vec{s} = (1, -1, 2)$.
+        \item $\vec{r} = (1, 2, 1)$ y $\vec{s} = (-2, 3, -4)$.
+    \end{multicols}
+    \end{enumerate}
+
+
+
+
+
+
+    
+
+\item En Física se considera al {\bf trabajo ($W$)} realizado sobre una partícula por una fuerza $\vec{F}$ aplicada en un desplazamiento $\vec{r}$ como $W = \vec{F} \cdot \vec{r}$.
+
+    \begin{itemize}
+        \item[a)] Calcular el trabajo realizado por la fuerza de componentes $(1, -2, 1)$ al desplazar un sólido desde un punto $A = (3, 2, -1)$ hasta $B = (2, 3, 1)$.
+        \item[b)] Si una fuerza aplicada a un sólido que se desplaza una cierta distancia realizó un trabajo nulo, ¿qué puede decir de las direcciones de los vectores que representan la fuerza y el desplazamiento?
+        \item[c)] Determinar el trabajo realizado por una fuerza de $5\,\text{N}$ que actúa en la dirección del vector $\vec{u} = (1, 1)$ al mover un objeto una distancia de un metro desde $P = (0, 0)$ hasta $Q = (1, 0)$.
+    \end{itemize}
+
+
+
+
+
+
+
+\item Sea el vector $\vec{u} = (3, -4)$. Hallar otro vector:
+
+    \begin{enumerate}[a) ]
+        \item Perpendicular y con el mismo módulo que el vector dado.
+        \item Ortogonal al vector dado y que tenga módulo tres.
+    \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+    
+
+\item Dados los vectores $\vec{u} = (1, -2, 4)$ y $\vec{v} = (-2, 4, 5)$:
+
+    \begin{itemize}
+        \item[a)] Hallar un vector perpendicular a ambos.
+        \item[b)] Hallar todos los vectores perpendiculares a ambos.
+        \item[c)] Hallar un vector perpendicular a ambos y de módulo igual a cinco. ¿Es único este vector?
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+\item Sean los vectores $\vec{v} = (a+1, -1, 4)$ y $\vec{w} = (2b+2, -2, 8)$, determinar el o los valores de $a \in \mathbb{R}$ y $b \in \mathbb{R}$ para que los vectores $\vec{v}$ y $\vec{w}$ sean paralelos. Resolver de dos maneras diferentes.
+
+
+
+
+
+
+
+
+
+
+
+
+\item Sabiendo que $\vec{u} \times \vec{v} = (1, -3, \sqrt{2})$, hallar el vector $\vec{v} \times \vec{u}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item Dados los vectores $\vec{a} = \iv + x\jv - \kv$ y $\vec{b} = 2\jv + \iv$, hallar todos los valores de $x \in \mathbb{R}$ para que el área del paralelogramo determinado por ellos sea $3\,\text{u}^2$.
+
+
+
+
+
+
+
+
+
+
+
+\item Utilizando la norma del producto vectorial entre vectores, obtener el valor de la superficie total del siguiente cuerpo, donde $a > 0$:
+
+
+\begin{center}
+    
+
+\begin{asy}
+    import three;
+
+size(5cm);
+currentprojection = perspective(3, 2, 1);
+
+triple A = (0, 0, 0); // Origen
+triple B = (4, 0, 0); // Punto en el eje x (4a)
+triple C = (0, 1, 0); // Punto en el eje y (a)
+triple D = (4, 1, 0); // Parte superior del rectángulo en la base
+triple E = (0, 0, 3); // Punto en la parte superior del eje z (3a)
+triple F = (4, 0, 3); // Arriba a la derecha
+
+// Ejes
+draw((0, 0, 0)--(5, 0, 0), Arrow3); label("$x$", (5, 0, 0), align=(1,0,0));
+draw((0, 0, 0)--(0, 2, 0), Arrow3); label("$y$", (0, 2, 0), align=(0,1,0));
+draw((0, 0, 0)--(0, 0, 4), Arrow3); label("$z$", (0, 0, 4), align=(0,0,1));
+
+// Aristas del prisma
+draw(A--B, linewidth(1.5));
+draw(A--C, linewidth(1.5));
+draw(A--E, linewidth(1.5));
+draw(C--D, linewidth(1.5));
+draw(C--E, linewidth(1.5));
+draw(B--D, linewidth(1.5));
+draw(D--F, linewidth(1.5));
+draw(E--F, linewidth(1.5));
+draw(B--F, linewidth(1.5));
+
+
+// dimensiones del cuerpo
+draw((4,-.2,0)--(4,.2,0));
+draw((0,1,-.2)--(0,1,.2));
+draw((0,-.2,3)--(0,.2,3));
+
+
+// Etiquetas de los puntos
+label("$4a$", B+(0,-.2,0), align=(0,-1,0));
+label("$a$",  C+(-.4,0,-.3), align=(0,0,-1));
+label("$3a$", E+(0,.2,0), align=(-1,0,0));
+\end{asy}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item  \begin{itemize}
+    \item[a)] Determinar si los puntos dados son coplanares: $A = (1, 1, 6)$, $B = (2, 3, 5)$, $C = (8, 4, 6)$, $D = (2, 1, 3)$.
+    \item[b)] Dados tres vectores $\vec{u} = 2\jv - \iv + 5\kv$, $\vec{v} = \alpha\jv - \kv$ y $\vec{w} = 4\kv - \jv - \iv$, hallar el valor de $\alpha \in \mathbb{R}$ de modo tal que los vectores resulten coplanares.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\item  En cada caso, dados los vectores $\vec{u}$, $\vec{v}$ y $\vec{w}$, calcular:
+
+\begin{itemize}
+    \item[a)] El volumen del paralelepípedo que ellos determinan.
+    \item[b)] El área del paralelogramo que forman los vectores $\vec{v}$ y $\vec{w}$.
+    \item[c)] La altura y el vector altura correspondientes al paralelepípedo cuya base está formada por los vectores $\vec{v}$ y $\vec{w}$.
+        \begin{itemize}
+            \item[i)] $\vec{u} = (2, 3, -2)$, $\vec{v} = (4, -1, -1)$ y $\vec{w} = (3, 1, 2)$.
+
+            
+            \item[ii)] $\vec{u} = (1, 6, -3)$, $\vec{v} = (8, 8, -4)$ y $\vec{w} = (2, -4, 2)$. 
+        \end{itemize}
+\end{itemize}
+
+
+   
+\end{enumerate}
+\end{document}
