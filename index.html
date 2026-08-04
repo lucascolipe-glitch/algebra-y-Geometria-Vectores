@@ -203,10 +203,19 @@
           <div class="concept-check">
             <strong>Comprobá la idea</strong>
             <p>Al trasladar una flecha para obtener un vector equivalente, ¿qué puede cambiar?</p>
-            <div class="option-grid" id="freeVectorQuestion">
-              <button class="choice-button" data-free-vector-answer="position" type="button">El punto inicial y el punto final</button>
-              <button class="choice-button" data-free-vector-answer="components" type="button">Las componentes del vector</button>
-              <button class="choice-button" data-free-vector-answer="geometry" type="button">El módulo, la dirección y el sentido</button>
+            <div class="choice-cards choice-cards--wide" id="freeVectorQuestion" role="radiogroup" aria-label="Opciones sobre vectores equivalentes">
+              <label class="choice-card">
+                <input type="radio" name="freeVectorAnswer" value="position">
+                <span class="choice-card__content">El punto inicial y el punto final</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="freeVectorAnswer" value="components">
+                <span class="choice-card__content">Las componentes del vector</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="freeVectorAnswer" value="geometry">
+                <span class="choice-card__content">El módulo, la dirección y el sentido</span>
+              </label>
             </div>
             <div class="feedback" id="freeVectorFeedback" aria-live="polite"></div>
           </div>
