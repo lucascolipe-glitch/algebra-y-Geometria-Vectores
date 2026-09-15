@@ -699,8 +699,9 @@
     document.getElementById('calculateCross').addEventListener('click',calculate);document.getElementById('swapCross').addEventListener('click',()=>{['x','y','z'].forEach(c=>{const u=document.getElementById(`crossU${c}`),v=document.getElementById(`crossV${c}`),tmp=u.value;u.value=v.value;v.value=tmp;});calculate();});document.getElementById('resetCrossCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('cross3d:reset')));lambda.addEventListener('input',updateFamily);calculate();
   }
 
-  function setupVolumeReadout(){
-    const u=[1,2,3],v=[2,0,1],w=[1,3,0],normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area,hvec=normal.map(x=>triple*x/(area*area));const out=document.getElementById('volumeReadout');out.innerHTML=`<div><span>v⃗×w⃗</span><strong>${tuple(normal)}</strong></div><div><span>Área base</span><strong>${format(area)}</strong></div><div><span>Volumen</span><strong>${format(volume)}</strong></div><div><span>Altura</span><strong>${format(height)}</strong></div><div><span>Vector altura</span><strong>${tuple(hvec)}</strong></div>`;document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
+  function setup(){
+    const u=[1,2,3],v=[2,0,1],w=[1,3,0],normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area,hvec=normal.map(x=>triple*x/(area*area));const out=document.getElementById('volumeReadout');
+    out.innerHTML=`<div><span>v⃗×w⃗</span><strong>${tuple(normal)}</strong></div><div><span>Área base</span><strong>${format(area)}</strong></div><div><span>Volumen</span><strong>${format(volume)}</strong></div><div><span>Altura</span><strong>${format(height)}</strong></div><div><span>Vector altura</span><strong>${tuple(hvec)}</strong></div>`;document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
   }
 
   function setupCoplanarity(){
@@ -831,7 +832,7 @@
   function line(x1,y1,x2,y2,cls){return el('line',{x1,y1,x2,y2,class:cls});}
   function text(svg,x,y,value,cls,fill){const t=el('text',{x,y,class:cls});if(fill)t.setAttribute('fill',fill);t.textContent=value;svg.appendChild(t);return t;}
   function num(id){return Number(document.getElementById(id).value);}
-  function tuple(v){return `\\left(${v.map(format).join(',')}\\right)`;}
+  function tuple(v){return `\(\\left(${v.map(format).join(',')}\\right)\)`;}
   function dotProduct(a,b){return a.reduce((s,x,i)=>s+x*b[i],0);}
   function crossProduct(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];}
   function format(n){if(!Number.isFinite(n))return '—';if(Math.abs(n)<1e-10)n=0;return Number.isInteger(n)?String(n):String(Math.round(n*1000)/1000);}
