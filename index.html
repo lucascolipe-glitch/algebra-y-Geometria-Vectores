@@ -41,7 +41,7 @@
     <div class="brand">
       <span class="brand-mark" aria-hidden="true">V</span>
       <div>
-        <p class="eyebrow">Álgebra y Geometría I · ING. CIVIL, ING. QUÍMICA, ING. ELÉCTRICA, ING. ELECTRÓNICA</p>
+        <p class="eyebrow">Álgebra y Geometría I · Ingeniería en Petróleo</p>
         <h1>Unidad 4 · Vectores en el plano y en el espacio</h1>
       </div>
     </div>
@@ -203,19 +203,10 @@
           <div class="concept-check">
             <strong>Comprobá la idea</strong>
             <p>Al trasladar una flecha para obtener un vector equivalente, ¿qué puede cambiar?</p>
-            <div class="choice-cards choice-cards--wide" id="freeVectorQuestion" role="radiogroup" aria-label="Opciones sobre vectores equivalentes">
-              <label class="choice-card">
-                <input type="radio" name="freeVectorAnswer" value="position">
-                <span class="choice-card__content">El punto inicial y el punto final</span>
-              </label>
-              <label class="choice-card">
-                <input type="radio" name="freeVectorAnswer" value="components">
-                <span class="choice-card__content">Las componentes del vector</span>
-              </label>
-              <label class="choice-card">
-                <input type="radio" name="freeVectorAnswer" value="geometry">
-                <span class="choice-card__content">El módulo, la dirección y el sentido</span>
-              </label>
+            <div class="option-grid" id="freeVectorQuestion">
+              <button class="choice-button" data-free-vector-answer="position" type="button">El punto inicial y el punto final</button>
+              <button class="choice-button" data-free-vector-answer="components" type="button">Las componentes del vector</button>
+              <button class="choice-button" data-free-vector-answer="geometry" type="button">El módulo, la dirección y el sentido</button>
             </div>
             <div class="feedback" id="freeVectorFeedback" aria-live="polite"></div>
           </div>
@@ -465,9 +456,7 @@
             <div class="control-panel">
               <div class="vector-input-row"><strong>\(\vec u\)</strong><input id="crossUx" type="number" value="1" aria-label="u x"><input id="crossUy" type="number" value="0" aria-label="u y"><input id="crossUz" type="number" value="2" aria-label="u z"></div>
               <div class="vector-input-row"><strong>\(\vec v\)</strong><input id="crossVx" type="number" value="2" aria-label="v x"><input id="crossVy" type="number" value="-1" aria-label="v y"><input id="crossVz" type="number" value="1" aria-label="v z"></div>
-              <div class="activity-actions"><button class="button primary" id="calculateCross" type="button">Calcular</button>
-                <button class="button secondary" id="swapCross" type="button">Invertir orden</button>
-                <button class="button ghost" id="resetCrossCamera" type="button">Reiniciar cámara</button></div>
+              <div class="activity-actions"><button class="button primary" id="calculateCross" type="button">Calcular</button><button class="button secondary" id="swapCross" type="button">Invertir orden</button><button class="button ghost" id="resetCrossCamera" type="button">Reiniciar cámara</button></div>
               <div id="crossOutput" class="formula-panel"></div>
             </div>
           </div>
@@ -505,7 +494,7 @@
             <div class="control-panel">
               <div class="formula-panel">\[\vec u=(1,2,3),\quad\vec v=(2,0,1),\quad\vec w=(1,3,0).\]</div>
               <div id="volumeReadout" class="metric-grid"></div>
-          <label class="check-control"><input id="showHeightVector" type="checkbox" checked> Mostrar vector altura asosiada a la base \(\vec v\) y \(\vec w\)</label>
+              <label class="check-control"><input id="showHeightVector" type="checkbox" checked> Mostrar vector altura</label>
               <button class="button ghost" id="resetVolumeCamera" type="button">Reiniciar cámara</button>
             </div>
           </div>
@@ -574,21 +563,15 @@
         <div class="section-heading"><div><p class="kicker">Archivos incluidos</p><h3>Material de estudio y fuentes LaTeX</h3></div></div>
         <div class="resource-grid">
           <a class="resource-card" href="materiales/teoria-vectores-2026.pdf"><span>PDF</span><div><strong>Teoría completa 2026</strong><p>Vectores en el plano y en el espacio.</p></div></a>
-          <!--
           <a class="resource-card" href="materiales/tp4-recursado-2026.tex"><span>TeX</span><div><strong>TP 4 del recursado</strong><p>Fuente LaTeX usada como práctica principal.</p></div></a>
           <a class="resource-card" href="materiales/resolucion-tp4-recursado-2026.tex"><span>TeX</span><div><strong>Resolución del recursado</strong><p>Desarrollos y gráficos paso a paso.</p></div></a>
-          -->
           <a class="resource-card" href="materiales/tp4-2025.pdf"><span>PDF</span><div><strong>Trabajo Práctico 4 · 2025</strong><p>Versión original de la cátedra.</p></div></a>
-          <!--
           <a class="resource-card" href="materiales/tp4-2025.tex"><span>TeX</span><div><strong>Fuente del TP 2025</strong><p>Documento editable en LaTeX.</p></div></a>
-          -->
           <a class="resource-card" href="materiales/resolucion-tp4-2025.pdf"><span>PDF</span><div><strong>Resolución TP 4 · 2025</strong><p>Ejemplos analíticos y gráficos complementarios.</p></div></a>
-          <!--
           <a class="resource-card" href="materiales/resolucion-tp4-2025.tex"><span>TeX</span><div><strong>Fuente de la resolución 2025</strong><p>Documento editable en LaTeX.</p></div></a>
           <a class="resource-card" href="materiales/clase-vectores-parte-1-2026.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 1</strong><p>Conceptos iniciales, vectores equivalentes, vector libre y operaciones.</p></div></a>
           <a class="resource-card" href="materiales/clase-vectores-parte-2.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 2</strong><p>Norma, versores, distancia y descomposición.</p></div></a>
           <a class="resource-card" href="materiales/clase-vectores-parte-3.ppsx"><span>PPSX</span><div><strong>Clase Vectores · Parte 3</strong><p>Producto vectorial, perpendicularidad y aplicaciones geométricas.</p></div></a>
-          -->
         </div>
 
         <article class="callout info"><strong>Uso sin servidor</strong><p>La página funciona con HTML, CSS y JavaScript estático. MathJax y Three.js se cargan desde CDN; el resto queda dentro del repositorio.</p></article>

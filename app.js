@@ -113,182 +113,43 @@
   };
 
   const errorCases = [
-    {
-      statement: String.raw`“Si \(\vec u\cdot\vec v=0\), entonces siempre ambos vectores son perpendiculares.”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Falta exigir que ambos sean no nulos`,
-        String.raw`Sólo es cierto en el plano`
-      ],
-      answer: 1,
-      explanation: 'El vector nulo tiene producto escalar cero con todos los vectores, pero no se le asigna una dirección perpendicular.'
-    },
-    {
-      statement: String.raw`“\(\|k\vec v\|=k\|\vec v\|\) para todo \(k\in\mathbb R\).”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Debe usarse \(|k|\)`,
-        String.raw`Debe usarse \(k^2\)`
-      ],
-      answer: 1,
-      explanation: 'La norma nunca es negativa; por eso aparece el valor absoluto del escalar.'
-    },
-    {
-      statement: String.raw`“\(\overrightarrow{PQ}=P-Q\).”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Debe ser extremo final menos extremo inicial: \(Q-P\)`,
-        String.raw`Depende del cuadrante`
-      ],
-      answer: 1,
-      explanation: 'El orden de los puntos determina el sentido del vector.'
-    },
-    {
-      statement: String.raw`“\(\vec u\times\vec v=\vec v\times\vec u\).”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Es anticonmutativo: \(\vec u\times\vec v=-(\vec v\times\vec u)\)`,
-        String.raw`Sólo cambia el módulo`
-      ],
-      answer: 1,
-      explanation: 'Al invertir el orden se invierte el sentido del vector normal.'
-    },
-    {
-      statement: String.raw`“Si \([\vec u,\vec v,\vec w]=0\), los tres vectores son coplanares.”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Incorrecto: deben ser ortogonales`,
-        String.raw`Sólo vale si sus normas son uno`
-      ],
-      answer: 0,
-      explanation: 'El producto mixto cero indica volumen nulo, equivalente a coplanaridad.'
-    },
-    {
-      statement: String.raw`“La proyección de \(\vec r\) sobre \(\vec s\) siempre tiene el mismo sentido que \(\vec s\).”`,
-      options: [
-        String.raw`Correcto`,
-        String.raw`Puede tener sentido opuesto si \(\vec r\cdot\vec s<0\)`,
-        String.raw`La proyección siempre es nula`
-      ],
-      answer: 1,
-      explanation: 'El coeficiente de la proyección puede ser negativo.'
-    }
+    {statement:String.raw`“Si \(\vec u\cdot\vec v=0\), entonces siempre ambos vectores son perpendiculares.”`, options:['Correcto','Falta exigir que ambos sean no nulos','Sólo es cierto en el plano'], answer:1, explanation:'El vector nulo tiene producto escalar cero con todos los vectores, pero no se le asigna una dirección perpendicular.'},
+    {statement:String.raw`“\(\|k\vec v\|=k\|\vec v\|\) para todo \(k\in\mathbb R\).”`, options:['Correcto','Debe usarse \(|k|\)','Debe usarse \(k^2\)'], answer:1, explanation:'La norma nunca es negativa; por eso aparece el valor absoluto del escalar.'},
+    {statement:String.raw`“\(\overrightarrow{PQ}=P-Q\).”`, options:['Correcto','Debe ser extremo final menos extremo inicial: \(Q-P\)','Depende del cuadrante'], answer:1, explanation:'El orden de los puntos determina el sentido del vector.'},
+    {statement:String.raw`“\(\vec u\times\vec v=\vec v\times\vec u\).”`, options:['Correcto','Es anticonmutativo: cambia el signo','Sólo cambia el módulo'], answer:1, explanation:'Al invertir el orden se invierte el sentido del vector normal.'},
+    {statement:String.raw`“Si \([\vec u,\vec v,\vec w]=0\), los tres vectores son coplanares.”`, options:['Correcto','Incorrecto: deben ser ortogonales','Sólo vale si sus normas son uno'], answer:0, explanation:'El producto mixto cero indica volumen nulo, equivalente a coplanaridad.'},
+    {statement:String.raw`“La proyección de \(\vec r\) sobre \(\vec s\) siempre tiene el mismo sentido que \(\vec s\).”`, options:['Correcto','Puede tener sentido opuesto si \(\vec r\cdot\vec s<0\)','La proyección siempre es nula'], answer:1, explanation:'El coeficiente de la proyección puede ser negativo.'}
   ];
   let errorIndex = 0;
 
   const quizBank = [
-    q(String.raw`Si \(P=(4,2)\) y \(Q=(7,4)\), ¿cuál es \(\overrightarrow{PQ}\)?`,
-      [String.raw`\((3,2)\)`, String.raw`\((-3,-2)\)`, String.raw`\((11,6)\)`, String.raw`\((3,1)\)`],
-      0, 'Extremo final menos extremo inicial.'),
-    q(String.raw`El vector opuesto de \((3,-5)\) es:`,
-      [String.raw`\((-3,5)\)`, String.raw`\((5,-3)\)`, String.raw`\((-3,-5)\)`, String.raw`\((3,5)\)`],
-      0, 'Se cambia el signo de cada componente.'),
-    q(String.raw`¿Cuánto vale \(\|(3,4)\|\)?`,
-      [String.raw`\(5\)`, String.raw`\(7\)`, String.raw`\(25\)`, String.raw`\(\sqrt7\)`],
-      0, 'Por Pitágoras: √(9+16)=5.'),
-    q(String.raw`Un vector no nulo y su versor asociado:`,
-      [String.raw`Tienen igual dirección y sentido`, String.raw`Tienen sentido opuesto`, String.raw`Tienen la misma norma`, String.raw`Son ortogonales`],
-      0, 'El versor se obtiene dividiendo por una cantidad positiva.'),
-    q(String.raw`Si \(\vec u=(1,2,2)\), entonces \(\|\vec u\|\) es:`,
-      [String.raw`\(3\)`, String.raw`\(5\)`, String.raw`\(\sqrt5\)`, String.raw`\(9\)`],
-      0, '√(1+4+4)=3.'),
-    q(String.raw`Si \(\vec u\cdot\vec v<0\), el ángulo entre dos vectores no nulos es:`,
-      [String.raw`Obtuso`, String.raw`Agudo`, String.raw`Recto`, String.raw`Nulo`],
-      0, 'El coseno es negativo.'),
-    q(String.raw`¿Qué representa \(\|\vec u\times\vec v\|\)?`,
-      [String.raw`Área del paralelogramo`, String.raw`Volumen del paralelepípedo`, String.raw`Longitud de \(\vec u+\vec v\)`, String.raw`Proyección escalar`],
-      0, 'La norma del producto vectorial es base por altura.'),
-    q(String.raw`Si \(\vec u\times\vec v=(2,-4,1)\), entonces \(\vec v\times\vec u\) es:`,
-      [String.raw`\((-2,4,-1)\)`, String.raw`\((2,-4,1)\)`, String.raw`\((4,-8,2)\)`, String.raw`\((0,0,0)\)`],
-      0, 'El producto vectorial es anticonmutativo.'),
-    q(String.raw`¿Cuál es el trabajo si fuerza y desplazamiento son perpendiculares y no nulos?`,
-      [String.raw`\(0\)`, String.raw`\(1\)`, String.raw`El producto de sus normas`, String.raw`No está definido`],
-      0, 'cos 90°=0.'),
-    q(String.raw`Si el producto mixto de tres vectores es distinto de cero:`,
-      [String.raw`No son coplanares`, String.raw`Son coplanares`, String.raw`Son todos ortogonales`, String.raw`Alguno es nulo`],
-      0, 'El volumen del paralelepípedo es positivo.'),
-    q(String.raw`La regla de la poligonal para sumar vectores consiste en:`,
-      [String.raw`Colocar el origen de uno en el extremo del anterior`, String.raw`Hacer coincidir todos los extremos`, String.raw`Multiplicar las normas`, String.raw`Calcular sólo los ángulos`],
-      0, 'La resultante une el origen del primero con el extremo del último.'),
-    q(String.raw`Dos vectores no nulos son paralelos si:`,
-      [String.raw`Uno es múltiplo escalar del otro`, String.raw`Su producto escalar es cero`, String.raw`Tienen igual norma`, String.raw`Su suma es nula siempre`],
-      0, 'El múltiplo puede ser positivo o negativo.'),
-    q(String.raw`¿Cuál es la proyección de un vector ortogonal sobre otro no nulo?`,
-      [String.raw`El vector nulo`, String.raw`El mismo vector`, String.raw`El vector opuesto`, String.raw`Un versor`],
-      0, 'El producto escalar del numerador es cero.'),
-    q(String.raw`El vector \((0,0,0)\):`,
-      [String.raw`No tiene versor asociado`, String.raw`Tiene infinitos versores asociados`, String.raw`Es unitario`, String.raw`Tiene norma uno`],
-      0, 'No puede dividirse por su norma porque es cero.'),
-    q(String.raw`Para \(\vec v=k(1,2,2)\), se cumple:`,
-      [String.raw`\(\|\vec v\|=3|k|\)`, String.raw`\(\|\vec v\|=3k\)`, String.raw`\(\|\vec v\|=9|k|\)`, String.raw`\(\|\vec v\|=|k|\)`],
-      0, 'La norma de (1,2,2) es 3.'),
-    q(String.raw`Si \(\vec u=(2,0)\) y \(\vec s=(1,\sqrt3)\), su producto escalar es:`,
-      [String.raw`\(2\)`, String.raw`\(2\sqrt3\)`, String.raw`\(0\)`, String.raw`\(4\)`],
-      0, '2·1+0·√3=2.'),
-    q(String.raw`La distancia entre \(P\) y \(Q\) es:`,
-      [String.raw`\(\|\overrightarrow{PQ}\|\)`, String.raw`\(P+Q\)`, String.raw`\(\overrightarrow{PQ}\cdot Q\)`, String.raw`Siempre \(1\)`],
-      0, 'La distancia es la longitud del vector que une los puntos.'),
-    q(String.raw`Un escalar negativo multiplicado por un vector:`,
-      [String.raw`Conserva dirección e invierte el sentido`, String.raw`Cambia la dirección y conserva el sentido`, String.raw`Siempre da el vector nulo`, String.raw`No cambia nada`],
-      0, 'La recta de acción se conserva y la orientación se invierte.'),
-    q(String.raw`El vector altura respecto de la base generada por \(\vec v\) y \(\vec w\) es paralelo a:`,
-      [String.raw`\(\vec v\times\vec w\)`, String.raw`\(\vec v+\vec w\)`, String.raw`\(\vec v-\vec w\)`, String.raw`\(\vec v\cdot\vec w\)`],
-      0, 'La altura es perpendicular al plano de la base.'),
-    q(String.raw`Para hallar componentes desde módulo y ángulo principal se usa:`,
-      [String.raw`\((\|\vec v\|\cos\theta,\|\vec v\|\sen\theta)\)`, String.raw`\((\cos\theta,\sen\theta)\)`, String.raw`\((\|\vec v\|\sen\theta,\|\vec v\|\cos\theta)\)`, String.raw`\((\theta,\|\vec v\|)\)`],
-      0, 'Las componentes son las proyecciones sobre los ejes.'),
-    q(String.raw`Si dos vectores son equivalentes:`,
-      [String.raw`Tienen igual módulo, dirección y sentido`, String.raw`Tienen el mismo origen`, String.raw`Tienen componentes opuestas`, String.raw`Deben estar en el primer cuadrante`],
-      0, 'Pueden estar ubicados en distintos lugares.'),
-    q(String.raw`El producto escalar de \((4,-3)\) y \((-2,5)\) vale:`,
-      [String.raw`\(-23\)`, String.raw`\(23\)`, String.raw`\(-8\)`, String.raw`\(7\)`],
-      0, '4(-2)+(-3)5=-23.'),
-    q(String.raw`Si \(\vec u\times\vec v=\vec 0\) y ambos son no nulos:`,
-      [String.raw`Son paralelos`, String.raw`Son ortogonales`, String.raw`Forman \(45^\circ\)`, String.raw`Sus normas son iguales`],
-      0, 'El seno del ángulo vale cero.'),
-    q(String.raw`El volumen del paralelepípedo se calcula con:`,
-      [String.raw`\(|\vec u\cdot(\vec v\times\vec w)|\)`, String.raw`\(\|\vec u+\vec v+\vec w\|\)`, String.raw`\(\vec u\cdot\vec v\)`, String.raw`\(\|\vec u\times\vec v\|\)`],
-      0, 'Es el valor absoluto del producto mixto.')
+    q('Si P=(4,2) y Q=(7,4), ¿cuál es \(\overrightarrow{PQ}\)?',['(3,2)','(-3,-2)','(11,6)','(3,1)'],0,'Extremo final menos extremo inicial.'),
+    q('El vector opuesto de \((3,-5)\) es:',['(-3,5)','(5,-3)','(-3,-5)','(3,5)'],0,'Se cambia el signo de cada componente.'),
+    q('¿Cuánto vale \(\|(3,4)\|\)?',['5','7','25','√7'],0,'Por Pitágoras: √(9+16)=5.'),
+    q('Un vector no nulo y su versor asociado:',['Tienen igual dirección y sentido','Tienen sentido opuesto','Tienen la misma norma','Son ortogonales'],0,'El versor se obtiene dividiendo por una cantidad positiva.'),
+    q('Si \(\vec u=(1,2,2)\), entonces \(\|\vec u\|\) es:',['3','5','√5','9'],0,'√(1+4+4)=3.'),
+    q('Si \(\vec u\cdot\vec v<0\), el ángulo entre dos vectores no nulos es:',['Obtuso','Agudo','Recto','Nulo'],0,'El coseno es negativo.'),
+    q('¿Qué representa \(\|\vec u\times\vec v\|\)?',['Área del paralelogramo','Volumen del paralelepípedo','Longitud de u+v','Proyección escalar'],0,'La norma del producto vectorial es base por altura.'),
+    q('Si \(\vec u\times\vec v=(2,-4,1)\), entonces \(\vec v\times\vec u\) es:',['(-2,4,-1)','(2,-4,1)','(4,-8,2)','(0,0,0)'],0,'El producto vectorial es anticonmutativo.'),
+    q('¿Cuál es el trabajo si fuerza y desplazamiento son perpendiculares y no nulos?',['0','1','El producto de sus normas','No está definido'],0,'cos 90°=0.'),
+    q('Si el producto mixto de tres vectores es distinto de cero:',['No son coplanares','Son coplanares','Son todos ortogonales','Alguno es nulo'],0,'El volumen del paralelepípedo es positivo.'),
+    q('La regla de la poligonal para sumar vectores consiste en:',['Colocar el origen de uno en el extremo del anterior','Hacer coincidir todos los extremos','Multiplicar las normas','Calcular sólo los ángulos'],0,'La resultante une el origen del primero con el extremo del último.'),
+    q('Dos vectores no nulos son paralelos si:',['Uno es múltiplo escalar del otro','Su producto escalar es cero','Tienen igual norma','Su suma es nula siempre'],0,'El múltiplo puede ser positivo o negativo.'),
+    q('¿Cuál es la proyección de un vector ortogonal sobre otro no nulo?',['El vector nulo','El mismo vector','El vector opuesto','Un versor'],0,'El producto escalar del numerador es cero.'),
+    q('El vector \((0,0,0)\):',['No tiene versor asociado','Tiene infinitos versores asociados','Es unitario','Tiene norma uno'],0,'No puede dividirse por su norma porque es cero.'),
+    q('Para \(\vec v=k(1,2,2)\), se cumple:',['\(\|\vec v\|=3|k|\)','\(\|\vec v\|=3k\)','\(\|\vec v\|=9|k|\)','\(\|\vec v\|=|k|\)'],0,'La norma de (1,2,2) es 3.'),
+    q('Si \(\vec u=(2,0)\) y \(\vec s=(1,\sqrt3)\), su producto escalar es:',['2','2√3','0','4'],0,'2·1+0·√3=2.'),
+    q('La distancia entre P y Q es:',['\(\|\overrightarrow{PQ}\|\)','\(P+Q\)','\(\overrightarrow{PQ}\cdot Q\)','Siempre 1'],0,'La distancia es la longitud del vector que une los puntos.'),
+    q('Un escalar negativo multiplicado por un vector:',['Conserva dirección e invierte el sentido','Cambia la dirección y conserva el sentido','Siempre da el vector nulo','No cambia nada'],0,'La recta de acción se conserva y la orientación se invierte.'),
+    q('El vector altura respecto de la base generada por v y w es paralelo a:',['\(\vec v\times\vec w\)','\(\vec v+\vec w\)','\(\vec v-\vec w\)','\(\vec v\cdot\vec w\)'],0,'La altura es perpendicular al plano de la base.'),
+    q('Para hallar componentes desde módulo y ángulo principal se usa:',['\((\|v\|\cosθ,\|v\|\senθ)\)','\((\cosθ,\senθ)\)','\((\|v\|\senθ,\|v\|\cosθ)\)','\((θ,\|v\|)\)'],0,'Las componentes son las proyecciones sobre los ejes.'),
+    q('Si dos vectores son equivalentes:',['Tienen igual módulo, dirección y sentido','Tienen el mismo origen','Tienen componentes opuestas','Deben estar en el primer cuadrante'],0,'Pueden estar ubicados en distintos lugares.'),
+    q('El producto escalar de \((4,-3)\) y \((-2,5)\) vale:',['-23','23','-8','7'],0,'4(-2)+(-3)5=-23.'),
+    q('Si \(\vec u\times\vec v=\vec0\) y ambos son no nulos:',['Son paralelos','Son ortogonales','Forman 45°','Sus normas son iguales'],0,'El seno del ángulo vale cero.'),
+    q('El volumen del paralelepípedo se calcula con:',['\(|\vec u\cdot(\vec v\times\vec w)|\)','\(\|\vec u+\vec v+\vec w\|\)','\(\vec u\cdot\vec v\)','\(\|\vec u\times\vec v\|\)'],0,'Es el valor absoluto del producto mixto.')
   ];
 
   function q(text, options, answer, explanation){ return {text,options,answer,explanation}; }
-
-
-  function escapeHtml(value){
-    return String(value)
-      .replaceAll('&','&amp;')
-      .replaceAll('<','&lt;')
-      .replaceAll('>','&gt;')
-      .replaceAll('"','&quot;')
-      .replaceAll("'",'&#039;');
-  }
-
-  function renderChoiceCards(name, options, ariaLabel, extraClass=''){
-    return `<div class="choice-cards ${extraClass}" role="radiogroup" aria-label="${escapeHtml(ariaLabel)}">
-      ${options.map((option,index)=>{
-        const value=typeof option==='object'?option.value:index;
-        const label=typeof option==='object'?option.label:option;
-        return `<label class="choice-card">
-          <input type="radio" name="${escapeHtml(name)}" value="${escapeHtml(value)}">
-          <span class="choice-card__content">${label}</span>
-        </label>`;
-      }).join('')}
-    </div>`;
-  }
-
-  function clearChoiceState(root){
-    root.querySelectorAll('.choice-card').forEach(card=>card.classList.remove('correct','wrong'));
-  }
-
-  function markChoiceState(root,correctValue,selectedValue,revealCorrect=false){
-    root.querySelectorAll('.choice-card').forEach(card=>{
-      const input=card.querySelector('input[type="radio"]');
-      const isCorrect=input?.value===String(correctValue);
-      const isSelected=input?.value===String(selectedValue);
-      card.classList.toggle('correct',isCorrect&&(isSelected||revealCorrect));
-      card.classList.toggle('wrong',isSelected&&!isCorrect);
-    });
-  }
 
   document.addEventListener('DOMContentLoaded', init);
 
@@ -568,18 +429,14 @@
       state.anchors=[[.08,.78],[.12,.14],[.58,.12],[.68,.72]];
       toggles.equivalents.checked=true; toggles.representative.checked=true; toggles.components.checked=true;
       syncInputs(); feedback.className='feedback'; feedback.textContent='';
-      const question=document.getElementById('freeVectorQuestion');
-      question.querySelectorAll('input[name="freeVectorAnswer"]').forEach(input=>input.checked=false);
-      clearChoiceState(question);
+      document.querySelectorAll('[data-free-vector-answer]').forEach(b=>b.classList.remove('active'));
       render();
     });
 
-    const freeVectorQuestion=document.getElementById('freeVectorQuestion');
-    freeVectorQuestion.addEventListener('change',e=>{
-      const input=e.target.closest('input[type="radio"][name="freeVectorAnswer"]');
-      if(!input) return;
-      const ok=input.value==='position';
-      markChoiceState(freeVectorQuestion,'position',input.value);
+    document.getElementById('freeVectorQuestion').addEventListener('click',e=>{
+      const button=e.target.closest('[data-free-vector-answer]'); if(!button) return;
+      document.querySelectorAll('[data-free-vector-answer]').forEach(b=>b.classList.toggle('active',b===button));
+      const ok=button.dataset.freeVectorAnswer==='position';
       feedback.className=`feedback ${ok?'success':'danger'}`;
       feedback.innerHTML=ok
         ? '<strong>Correcto.</strong> Cambian los puntos donde se dibuja la flecha, pero se conservan las componentes, el módulo, la dirección y el sentido.'
@@ -699,9 +556,8 @@
     document.getElementById('calculateCross').addEventListener('click',calculate);document.getElementById('swapCross').addEventListener('click',()=>{['x','y','z'].forEach(c=>{const u=document.getElementById(`crossU${c}`),v=document.getElementById(`crossV${c}`),tmp=u.value;u.value=v.value;v.value=tmp;});calculate();});document.getElementById('resetCrossCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('cross3d:reset')));lambda.addEventListener('input',updateFamily);calculate();
   }
 
-  function setup(){
-    const u=[1,2,3],v=[2,0,1],w=[1,3,0],normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area,hvec=normal.map(x=>triple*x/(area*area));const out=document.getElementById('volumeReadout');
-    out.innerHTML=`<div><span>v⃗×w⃗</span><strong>${tuple(normal)}</strong></div><div><span>Área base</span><strong>${format(area)}</strong></div><div><span>Volumen</span><strong>${format(volume)}</strong></div><div><span>Altura</span><strong>${format(height)}</strong></div><div><span>Vector altura</span><strong>${tuple(hvec)}</strong></div>`;document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
+  function setupVolumeReadout(){
+    const u=[1,2,3],v=[2,0,1],w=[1,3,0],normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area,hvec=normal.map(x=>triple*x/(area*area));const out=document.getElementById('volumeReadout');out.innerHTML=`<div><span>v⃗×w⃗</span><strong>${tuple(normal)}</strong></div><div><span>Área base</span><strong>${format(area)}</strong></div><div><span>Volumen</span><strong>${format(volume)}</strong></div><div><span>Altura</span><strong>${format(height)}</strong></div><div><span>Vector altura</span><strong>${tuple(hvec)}</strong></div>`;document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
   }
 
   function setupCoplanarity(){
@@ -709,97 +565,16 @@
   }
 
   function setupErrorDetective(){
-    const statement=document.getElementById('errorStatement');
-    const options=document.getElementById('errorOptions');
-    const feedback=document.getElementById('errorFeedback');
-    const counter=document.getElementById('errorCaseCounter');
-
-    function render(){
-      const item=errorCases[errorIndex];
-      counter.textContent=`Caso ${errorIndex+1}`;
-      statement.innerHTML=item.statement;
-      options.innerHTML=renderChoiceCards(
-        'errorAnswer',
-        item.options.map((label,value)=>({value,label})),
-        `Opciones del caso ${errorIndex+1}`,
-        'choice-cards--wide'
-      );
-      feedback.className='feedback';
-      feedback.textContent='';
-      typeset(statement);
-      typeset(options);
-    }
-
-    options.addEventListener('change',e=>{
-      const input=e.target.closest('input[type="radio"][name="errorAnswer"]');
-      if(!input) return;
-      const item=errorCases[errorIndex];
-      const ok=Number(input.value)===item.answer;
-      markChoiceState(options,item.answer,input.value);
-      setFeedback(feedback,ok?'success':'danger',`${ok?'Correcto.':'Revisá la afirmación.'} ${item.explanation}`);
-      if(ok) markComplete('practica');
-    });
-
-    document.getElementById('nextErrorCase').addEventListener('click',()=>{
-      errorIndex=(errorIndex+1)%errorCases.length;
-      render();
-    });
-    render();
+    const statement=document.getElementById('errorStatement'),options=document.getElementById('errorOptions'),feedback=document.getElementById('errorFeedback'),counter=document.getElementById('errorCaseCounter');
+    function render(){const item=errorCases[errorIndex];counter.textContent=`Caso ${errorIndex+1}`;statement.innerHTML=item.statement;options.innerHTML='';item.options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='choice-button';b.innerHTML=text;b.addEventListener('click',()=>{const ok=i===item.answer;setFeedback(feedback,ok?'success':'danger',`${ok?'Correcto.':'Revisá la afirmación.'} ${item.explanation}`);if(ok)markComplete('practica');});options.appendChild(b);});feedback.className='feedback';feedback.textContent='';typeset(statement);}
+    document.getElementById('nextErrorCase').addEventListener('click',()=>{errorIndex=(errorIndex+1)%errorCases.length;render();});render();
   }
 
   function setupQuiz(){
-    const container=document.getElementById('quizQuestions');
-    const form=document.getElementById('quizForm');
-    const result=document.getElementById('quizResult');
-    let current=[];
-
-    function build(){
-      current=shuffle([...quizBank]).slice(0,10).map(item=>({
-        ...item,
-        displayOptions:shuffle(item.options.map((label,original)=>({label,original})))
-      }));
-      container.innerHTML=current.map((item,index)=>`<fieldset class="quiz-question">
-        <legend><span>${index+1}</span>${item.text}</legend>
-        ${renderChoiceCards(
-          `q${index}`,
-          item.displayOptions.map(option=>({value:option.original,label:option.label})),
-          `Opciones de la pregunta ${index+1}`,
-          'choice-cards--quiz'
-        )}
-        <div class="question-feedback" id="qFeedback${index}"></div>
-      </fieldset>`).join('');
-      result.className='quiz-result';
-      result.innerHTML='';
-      typeset(container);
-    }
-
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      let score=0;
-      let answered=0;
-      current.forEach((item,index)=>{
-        const question=container.querySelectorAll('.quiz-question')[index];
-        const selected=question.querySelector(`input[name="q${index}"]:checked`);
-        const feedback=document.getElementById(`qFeedback${index}`);
-        const ok=Boolean(selected)&&Number(selected.value)===item.answer;
-        if(selected) answered++;
-        if(ok) score++;
-        question.classList.toggle('correct',ok);
-        question.classList.toggle('incorrect',!ok);
-        clearChoiceState(question);
-        markChoiceState(question,item.answer,selected?.value??'',true);
-        feedback.className=`question-feedback ${ok?'correct':'incorrect'}`;
-        feedback.textContent=`${ok?'Correcto.':selected?'Respuesta incorrecta.':'Sin responder.'} ${item.explanation}`;
-      });
-      const pct=Math.round(score/current.length*100);
-      result.className=`quiz-result ${pct>=70?'success':'warning'}`;
-      result.innerHTML=`<strong>${score}/${current.length} · ${pct}%</strong><p>Respondiste ${answered} preguntas. ${pct>=70?'Buen dominio general de la unidad.':'Revisá los módulos vinculados con los errores y generá otro intento.'}</p>`;
-      if(pct>=70) markComplete('autoevaluacion');
-      typeset(container);
-    });
-
-    document.getElementById('newQuiz').addEventListener('click',build);
-    build();
+    const container=document.getElementById('quizQuestions'),form=document.getElementById('quizForm'),result=document.getElementById('quizResult');let current=[];
+    function build(){current=shuffle([...quizBank]).slice(0,10).map(item=>({...item,displayOptions:shuffle(item.options.map((text,i)=>({text,original:i})))}));container.innerHTML=current.map((item,i)=>`<fieldset class="quiz-question"><legend><span>${i+1}</span>${item.text}</legend>${item.displayOptions.map((o,j)=>`<label><input type="radio" name="q${i}" value="${o.original}"><span>${o.text}</span></label>`).join('')}<div class="question-feedback" id="qFeedback${i}"></div></fieldset>`).join('');result.className='quiz-result';result.innerHTML='';typeset(container);}
+    form.addEventListener('submit',e=>{e.preventDefault();let score=0,answered=0;current.forEach((item,i)=>{const selected=form.querySelector(`input[name="q${i}"]:checked`),fb=document.getElementById(`qFeedback${i}`);if(selected){answered++;const ok=Number(selected.value)===item.answer;if(ok)score++;fb.className=`question-feedback ${ok?'correct':'incorrect'}`;fb.textContent=`${ok?'Correcto.':'Respuesta incorrecta.'} ${item.explanation}`;}else{fb.className='question-feedback incorrect';fb.textContent=`Sin responder. ${item.explanation}`;}});const pct=Math.round(score/current.length*100);result.className=`quiz-result ${pct>=70?'success':'warning'}`;result.innerHTML=`<strong>${score}/${current.length} · ${pct}%</strong><p>Respondiste ${answered} preguntas. ${pct>=70?'Buen dominio general de la unidad.':'Revisá los módulos vinculados con los errores y generá otro intento.'}</p>`;if(pct>=70)markComplete('autoevaluacion');});
+    document.getElementById('newQuiz').addEventListener('click',build);build();
   }
 
   function setupVideos(){
@@ -832,7 +607,7 @@
   function line(x1,y1,x2,y2,cls){return el('line',{x1,y1,x2,y2,class:cls});}
   function text(svg,x,y,value,cls,fill){const t=el('text',{x,y,class:cls});if(fill)t.setAttribute('fill',fill);t.textContent=value;svg.appendChild(t);return t;}
   function num(id){return Number(document.getElementById(id).value);}
-  function tuple(v){return `(${v.map(format).join(',')})`;}
+  function tuple(v){return `\\left(${v.map(format).join(',')}\\right)`;}
   function dotProduct(a,b){return a.reduce((s,x,i)=>s+x*b[i],0);}
   function crossProduct(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];}
   function format(n){if(!Number.isFinite(n))return '—';if(Math.abs(n)<1e-10)n=0;return Number.isInteger(n)?String(n):String(Math.round(n*1000)/1000);}
