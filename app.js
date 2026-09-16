@@ -113,40 +113,40 @@
   };
 
   const errorCases = [
-    {statement:String.raw`“Si \(\vec u\cdot\vec v=0\), entonces siempre ambos vectores son perpendiculares.”`, options:['Correcto','Falta exigir que ambos sean no nulos','Sólo es cierto en el plano'], answer:1, explanation:'El vector nulo tiene producto escalar cero con todos los vectores, pero no se le asigna una dirección perpendicular.'},
-    {statement:String.raw`“\(\|k\vec v\|=k\|\vec v\|\) para todo \(k\in\mathbb R\).”`, options:['Correcto','Debe usarse \(|k|\)','Debe usarse \(k^2\)'], answer:1, explanation:'La norma nunca es negativa; por eso aparece el valor absoluto del escalar.'},
-    {statement:String.raw`“\(\overrightarrow{PQ}=P-Q\).”`, options:['Correcto','Debe ser extremo final menos extremo inicial: \(Q-P\)','Depende del cuadrante'], answer:1, explanation:'El orden de los puntos determina el sentido del vector.'},
+    {statement:String.raw`“\(\vec u\cdot\vec v=0\), entonces siempre ambos vectores son perpendiculares.”`, options:['Correcto','Falta exigir que ambos sean no nulos','Sólo es cierto en el plano'], answer:1, explanation:'El vector nulo tiene producto escalar cero con todos los vectores, pero no se le asigna una dirección perpendicular.'},
+    {statement:String.raw`“\(\|k\vec v\|=k\|\vec v\|\) para todo \(k\in\mathbb R\).”`, options:['Correcto',String.raw`Debe usarse \(|k|\)`,String.raw`Debe usarse \(k^2\)`], answer:1, explanation:'La norma nunca es negativa; por eso aparece el valor absoluto del escalar.'},
+    {statement:String.raw`“\(\overrightarrow{PQ}=P-Q\).”`, options:['Correcto',String.raw`Debe ser extremo final menos extremo inicial: \(Q-P\)`,'Depende del cuadrante'], answer:1, explanation:'El orden de los puntos determina el sentido del vector.'},
     {statement:String.raw`“\(\vec u\times\vec v=\vec v\times\vec u\).”`, options:['Correcto','Es anticonmutativo: cambia el signo','Sólo cambia el módulo'], answer:1, explanation:'Al invertir el orden se invierte el sentido del vector normal.'},
-    {statement:String.raw`“Si \([\vec u,\vec v,\vec w]=0\), los tres vectores son coplanares.”`, options:['Correcto','Incorrecto: deben ser ortogonales','Sólo vale si sus normas son uno'], answer:0, explanation:'El producto mixto cero indica volumen nulo, equivalente a coplanaridad.'},
-    {statement:String.raw`“La proyección de \(\vec r\) sobre \(\vec s\) siempre tiene el mismo sentido que \(\vec s\).”`, options:['Correcto','Puede tener sentido opuesto si \(\vec r\cdot\vec s<0\)','La proyección siempre es nula'], answer:1, explanation:'El coeficiente de la proyección puede ser negativo.'}
+    {statement:String.raw`“\([\vec u,\vec v,\vec w]=0\), los tres vectores son coplanares.”`, options:['Correcto','Incorrecto: deben ser ortogonales','Sólo vale si sus normas son uno'], answer:0, explanation:'El producto mixto cero indica volumen nulo, equivalente a coplanaridad.'},
+    {statement:String.raw`“La proyección de \(\vec r\) sobre \(\vec s\) siempre tiene el mismo sentido que \(\vec s\).”`, options:['Correcto',String.raw`Puede tener sentido opuesto si \(\vec r\cdot\vec s<0\)`,'La proyección siempre es nula'], answer:1, explanation:'El coeficiente de la proyección puede ser negativo.'}
   ];
   let errorIndex = 0;
 
   const quizBank = [
-    q('Si P=(4,2) y Q=(7,4), ¿cuál es \(\overrightarrow{PQ}\)?',['(3,2)','(-3,-2)','(11,6)','(3,1)'],0,'Extremo final menos extremo inicial.'),
-    q('El vector opuesto de \((3,-5)\) es:',['(-3,5)','(5,-3)','(-3,-5)','(3,5)'],0,'Se cambia el signo de cada componente.'),
-    q('¿Cuánto vale \(\|(3,4)\|\)?',['5','7','25','√7'],0,'Por Pitágoras: √(9+16)=5.'),
+    q(String.raw`Si \(P=(4,2)\) y \(Q=(7,4)\), ¿cuál es \(\overrightarrow{PQ}\)?`,[String.raw`\((3,2)\)`,String.raw`\((-3,-2)\)`,String.raw`\((11,6)\)`,String.raw`\((3,1)\)`],0,'Extremo final menos extremo inicial.'),
+    q(String.raw`El vector opuesto de \((3,-5)\) es:`,[String.raw`\((-3,5)\)`,String.raw`\((5,-3)\)`,String.raw`\((-3,-5)\)`,String.raw`\((3,5)\)`],0,'Se cambia el signo de cada componente.'),
+    q(String.raw`¿Cuánto vale \(\|(3,4)\|\)?`,[String.raw`\(5\)`,String.raw`\(7\)`,String.raw`\(25\)`,String.raw`\(\sqrt7\)`],0,'Por Pitágoras: √(9+16)=5.'),
     q('Un vector no nulo y su versor asociado:',['Tienen igual dirección y sentido','Tienen sentido opuesto','Tienen la misma norma','Son ortogonales'],0,'El versor se obtiene dividiendo por una cantidad positiva.'),
-    q('Si \(\vec u=(1,2,2)\), entonces \(\|\vec u\|\) es:',['3','5','√5','9'],0,'√(1+4+4)=3.'),
-    q('Si \(\vec u\cdot\vec v<0\), el ángulo entre dos vectores no nulos es:',['Obtuso','Agudo','Recto','Nulo'],0,'El coseno es negativo.'),
-    q('¿Qué representa \(\|\vec u\times\vec v\|\)?',['Área del paralelogramo','Volumen del paralelepípedo','Longitud de u+v','Proyección escalar'],0,'La norma del producto vectorial es base por altura.'),
-    q('Si \(\vec u\times\vec v=(2,-4,1)\), entonces \(\vec v\times\vec u\) es:',['(-2,4,-1)','(2,-4,1)','(4,-8,2)','(0,0,0)'],0,'El producto vectorial es anticonmutativo.'),
-    q('¿Cuál es el trabajo si fuerza y desplazamiento son perpendiculares y no nulos?',['0','1','El producto de sus normas','No está definido'],0,'cos 90°=0.'),
+    q(String.raw`Si \(\vec u=(1,2,2)\), entonces \(\|\vec u\|\) es:`,[String.raw`\(3\)`,String.raw`\(5\)`,String.raw`\(\sqrt5\)`,String.raw`\(9\)`],0,'√(1+4+4)=3.'),
+    q(String.raw`Si \(\vec u\cdot\vec v<0\), el ángulo entre dos vectores no nulos es:`,['Obtuso','Agudo','Recto','Nulo'],0,'El coseno es negativo.'),
+    q(String.raw`¿Qué representa \(\|\vec u\times\vec v\|\)?`,['Área del paralelogramo','Volumen del paralelepípedo',String.raw`Longitud de \(\vec u+\vec v\)`,'Proyección escalar'],0,'La norma del producto vectorial es base por altura.'),
+    q(String.raw`Si \(\vec u\times\vec v=(2,-4,1)\), entonces \(\vec v\times\vec u\) es:`,[String.raw`\((-2,4,-1)\)`,String.raw`\((2,-4,1)\)`,String.raw`\((4,-8,2)\)`,String.raw`\((0,0,0)\)`],0,'El producto vectorial es anticonmutativo.'),
+    q('¿Cuál es el trabajo si fuerza y desplazamiento son perpendiculares y no nulos?',[String.raw`\(0\)`,String.raw`\(1\)`,'El producto de sus normas','No está definido'],0,'cos 90°=0.'),
     q('Si el producto mixto de tres vectores es distinto de cero:',['No son coplanares','Son coplanares','Son todos ortogonales','Alguno es nulo'],0,'El volumen del paralelepípedo es positivo.'),
     q('La regla de la poligonal para sumar vectores consiste en:',['Colocar el origen de uno en el extremo del anterior','Hacer coincidir todos los extremos','Multiplicar las normas','Calcular sólo los ángulos'],0,'La resultante une el origen del primero con el extremo del último.'),
     q('Dos vectores no nulos son paralelos si:',['Uno es múltiplo escalar del otro','Su producto escalar es cero','Tienen igual norma','Su suma es nula siempre'],0,'El múltiplo puede ser positivo o negativo.'),
     q('¿Cuál es la proyección de un vector ortogonal sobre otro no nulo?',['El vector nulo','El mismo vector','El vector opuesto','Un versor'],0,'El producto escalar del numerador es cero.'),
-    q('El vector \((0,0,0)\):',['No tiene versor asociado','Tiene infinitos versores asociados','Es unitario','Tiene norma uno'],0,'No puede dividirse por su norma porque es cero.'),
-    q('Para \(\vec v=k(1,2,2)\), se cumple:',['\(\|\vec v\|=3|k|\)','\(\|\vec v\|=3k\)','\(\|\vec v\|=9|k|\)','\(\|\vec v\|=|k|\)'],0,'La norma de (1,2,2) es 3.'),
-    q('Si \(\vec u=(2,0)\) y \(\vec s=(1,\sqrt3)\), su producto escalar es:',['2','2√3','0','4'],0,'2·1+0·√3=2.'),
-    q('La distancia entre P y Q es:',['\(\|\overrightarrow{PQ}\|\)','\(P+Q\)','\(\overrightarrow{PQ}\cdot Q\)','Siempre 1'],0,'La distancia es la longitud del vector que une los puntos.'),
+    q(String.raw`El vector \((0,0,0)\):`,['No tiene versor asociado','Tiene infinitos versores asociados','Es unitario','Tiene norma uno'],0,'No puede dividirse por su norma porque es cero.'),
+    q(String.raw`Para \(\vec v=k(1,2,2)\), se cumple:`,[String.raw`\(\|\vec v\|=3|k|\)`,String.raw`\(\|\vec v\|=3k\)`,String.raw`\(\|\vec v\|=9|k|\)`,String.raw`\(\|\vec v\|=|k|\)`],0,'La norma de (1,2,2) es 3.'),
+    q(String.raw`Si \(\vec u=(2,0)\) y \(\vec s=(1,\sqrt3)\), su producto escalar es:`,[String.raw`\(2\)`,String.raw`\(2\sqrt3\)`,String.raw`\(0\)`,String.raw`\(4\)`],0,'2·1+0·√3=2.'),
+    q(String.raw`La distancia entre \(P\) y \(Q\) es:`,[String.raw`\(\|\overrightarrow{PQ}\|\)`,String.raw`\(P+Q\)`,String.raw`\(\overrightarrow{PQ}\cdot Q\)`,'Siempre 1'],0,'La distancia es la longitud del vector que une los puntos.'),
     q('Un escalar negativo multiplicado por un vector:',['Conserva dirección e invierte el sentido','Cambia la dirección y conserva el sentido','Siempre da el vector nulo','No cambia nada'],0,'La recta de acción se conserva y la orientación se invierte.'),
-    q('El vector altura respecto de la base generada por v y w es paralelo a:',['\(\vec v\times\vec w\)','\(\vec v+\vec w\)','\(\vec v-\vec w\)','\(\vec v\cdot\vec w\)'],0,'La altura es perpendicular al plano de la base.'),
-    q('Para hallar componentes desde módulo y ángulo principal se usa:',['\((\|v\|\cosθ,\|v\|\senθ)\)','\((\cosθ,\senθ)\)','\((\|v\|\senθ,\|v\|\cosθ)\)','\((θ,\|v\|)\)'],0,'Las componentes son las proyecciones sobre los ejes.'),
+    q(String.raw`El vector altura respecto de la base generada por \(\vec v\) y \(\vec w\) es paralelo a:`,[String.raw`\(\vec v\times\vec w\)`,String.raw`\(\vec v+\vec w\)`,String.raw`\(\vec v-\vec w\)`,String.raw`\(\vec v\cdot\vec w\)`],0,'La altura es perpendicular al plano de la base.'),
+    q('Para hallar componentes desde módulo y ángulo principal se usa:',[String.raw`\(\left(\|\vec v\|\cos\theta,\|\vec v\|\sen\theta\right)\)`,String.raw`\((\cos\theta,\sen\theta)\)`,String.raw`\(\left(\|\vec v\|\sen\theta,\|\vec v\|\cos\theta\right)\)`,String.raw`\((\theta,\|\vec v\|)\)`],0,'Las componentes son las proyecciones sobre los ejes.'),
     q('Si dos vectores son equivalentes:',['Tienen igual módulo, dirección y sentido','Tienen el mismo origen','Tienen componentes opuestas','Deben estar en el primer cuadrante'],0,'Pueden estar ubicados en distintos lugares.'),
-    q('El producto escalar de \((4,-3)\) y \((-2,5)\) vale:',['-23','23','-8','7'],0,'4(-2)+(-3)5=-23.'),
-    q('Si \(\vec u\times\vec v=\vec0\) y ambos son no nulos:',['Son paralelos','Son ortogonales','Forman 45°','Sus normas son iguales'],0,'El seno del ángulo vale cero.'),
-    q('El volumen del paralelepípedo se calcula con:',['\(|\vec u\cdot(\vec v\times\vec w)|\)','\(\|\vec u+\vec v+\vec w\|\)','\(\vec u\cdot\vec v\)','\(\|\vec u\times\vec v\|\)'],0,'Es el valor absoluto del producto mixto.')
+    q(String.raw`El producto escalar de \((4,-3)\) y \((-2,5)\) vale:`,[String.raw`\(-23\)`,String.raw`\(23\)`,String.raw`\(-8\)`,String.raw`\(7\)`],0,'4(-2)+(-3)5=-23.'),
+    q(String.raw`Si \(\vec u\times\vec v=\vec 0\) y ambos son no nulos:`,['Son paralelos','Son ortogonales',String.raw`Forman \(45^\circ\)`,'Sus normas son iguales'],0,'El seno del ángulo vale cero.'),
+    q('El volumen del paralelepípedo se calcula con:',[String.raw`\(|\vec u\cdot(\vec v\times\vec w)|\)`,String.raw`\(\|\vec u+\vec v+\vec w\|\)`,String.raw`\(\vec u\cdot\vec v\)`,String.raw`\(\|\vec u\times\vec v\|\)`],0,'Es el valor absoluto del producto mixto.')
   ];
 
   function q(text, options, answer, explanation){ return {text,options,answer,explanation}; }
@@ -296,8 +296,8 @@
     }
 
     function makeArrow(defs,id,color){
-      const marker=el('marker',{id,markerWidth:'10',markerHeight:'10',refX:'8',refY:'5',orient:'auto',markerUnits:'strokeWidth'});
-      marker.appendChild(el('path',{d:'M0,0 L10,5 L0,10 Z',fill:color}));
+      const marker=el('marker',{id,markerWidth:'8',markerHeight:'8',refX:'7.4',refY:'4',orient:'auto',markerUnits:'userSpaceOnUse'});
+      marker.appendChild(el('path',{d:'M0,0 L8,4 L0,8 Z',fill:color}));
       defs.appendChild(marker);
     }
 
@@ -481,7 +481,7 @@
     document.getElementById('calculatePQ').addEventListener('click',()=>{
       const p=[num('pointPx'),num('pointPy')],q=[num('pointQx'),num('pointQy')]; if(is3d){p.push(num('pointPz'));q.push(num('pointQz'));}
       const d=q.map((v,i)=>v-p[i]);
-      out.innerHTML=`<div class="step-content"><article><span class="step-number">1</span><div><strong>Identificar el orden.</strong><p>Extremo final menos extremo inicial.</p></div></article><article><span class="step-number">2</span><div>\[\overrightarrow{PQ}=${tuple(q)}-${tuple(p)}.\]</div></article><article><span class="step-number">3</span><div>\[\boxed{\overrightarrow{PQ}=${tuple(d)}}.\]</div></article></div>`;
+      out.innerHTML=String.raw`<div class="step-content"><article><span class="step-number">1</span><div><strong>Identificar el orden.</strong><p>Extremo final menos extremo inicial.</p></div></article><article><span class="step-number">2</span><div>\[\overrightarrow{PQ}=${tuple(q)}-${tuple(p)}.\]</div></article><article><span class="step-number">3</span><div>\[\boxed{\overrightarrow{PQ}=${tuple(d)}}.\]</div></article></div>`;
       typeset(out); markComplete('concepto');
     });
     updateDimension();
@@ -514,7 +514,7 @@
 
   function setupNormLab(){
     const out=document.getElementById('normOutput'); let opposite=false;
-    function calculate(){const v=[num('normX'),num('normY'),num('normZ')],n=Math.hypot(...v);if(n===0){out.innerHTML='<div class="feedback danger">El vector nulo tiene norma cero y no posee versor asociado.</div>';return;}const unit=v.map(x=>(opposite?-1:1)*x/n);out.innerHTML=`<div class="step-content"><article><span class="step-number">1</span><div>\[\|\vec v\|=\sqrt{${v.map(x=>`(${format(x)})^2`).join('+')}}=${format(n)}.\]</div></article><article><span class="step-number">2</span><div>\[${opposite?'-\widehat v':'\widehat v'}=${tuple(unit)}.\]</div></article><article><span class="step-number">3</span><div>Comprobación: \(\|${opposite?'-\widehat v':'\widehat v'}\|=1\).</div></article></div>`;typeset(out);markComplete('norma');}
+    function calculate(){const v=[num('normX'),num('normY'),num('normZ')],n=Math.hypot(...v);if(n===0){out.innerHTML='<div class="feedback danger">El vector nulo tiene norma cero y no posee versor asociado.</div>';return;}const unit=v.map(x=>(opposite?-1:1)*x/n);out.innerHTML=String.raw`<div class="step-content"><article><span class="step-number">1</span><div>\[\|\vec v\|=\sqrt{${v.map(x=>`(${format(x)})^2`).join('+')}}=${format(n)}.\]</div></article><article><span class="step-number">2</span><div>\[${opposite?'-\widehat v':'\widehat v'}=${tuple(unit)}.\]</div></article><article><span class="step-number">3</span><div>Comprobación: \(\|${opposite?'-\widehat v':'\widehat v'}\|=1\).</div></article></div>`;typeset(out);markComplete('norma');}
     document.getElementById('calculateNorm').addEventListener('click',()=>{opposite=false;calculate();});document.getElementById('oppositeUnit').addEventListener('click',()=>{opposite=true;calculate();});calculate();
   }
 
@@ -557,7 +557,20 @@
   }
 
   function setupVolumeReadout(){
-    const u=[1,2,3],v=[2,0,1],w=[1,3,0],normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area,hvec=normal.map(x=>triple*x/(area*area));const out=document.getElementById('volumeReadout');out.innerHTML=`<div><span>v⃗×w⃗</span><strong>${tuple(normal)}</strong></div><div><span>Área base</span><strong>${format(area)}</strong></div><div><span>Volumen</span><strong>${format(volume)}</strong></div><div><span>Altura</span><strong>${format(height)}</strong></div><div><span>Vector altura</span><strong>${tuple(hvec)}</strong></div>`;document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
+    const u=[1,2,3],v=[2,0,1],w=[1,3,0];
+    const normal=crossProduct(v,w),triple=dotProduct(u,normal),area=Math.hypot(...normal),volume=Math.abs(triple),height=volume/area;
+    const hvec=normal.map(x=>triple*x/(area*area));
+    const out=document.getElementById('volumeReadout');
+    out.innerHTML=String.raw`
+      <div><span>\(\vec v\times\vec w\)</span><strong>\(${tuple(normal)}\)</strong></div>
+      <div><span>Área base</span><strong>\(${format(area)}\)</strong></div>
+      <div><span>Volumen</span><strong>\(${format(volume)}\)</strong></div>
+      <div><span>Altura</span><strong>\(${format(height)}\)</strong></div>
+      <div class="metric-wide"><span>Vector altura</span><strong>\(${tuple(hvec)}\)</strong></div>`;
+    typeset(out);
+    document.getElementById('showHeightVector').addEventListener('change',e=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:e.target.checked}})));
+    document.getElementById('resetVolumeCamera').addEventListener('click',()=>window.dispatchEvent(new CustomEvent('volume3d:reset')));
+    setTimeout(()=>window.dispatchEvent(new CustomEvent('volume3d:update',{detail:{showHeight:true}})),50);
   }
 
   function setupCoplanarity(){
@@ -566,13 +579,13 @@
 
   function setupErrorDetective(){
     const statement=document.getElementById('errorStatement'),options=document.getElementById('errorOptions'),feedback=document.getElementById('errorFeedback'),counter=document.getElementById('errorCaseCounter');
-    function render(){const item=errorCases[errorIndex];counter.textContent=`Caso ${errorIndex+1}`;statement.innerHTML=item.statement;options.innerHTML='';item.options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='choice-button';b.innerHTML=text;b.addEventListener('click',()=>{const ok=i===item.answer;setFeedback(feedback,ok?'success':'danger',`${ok?'Correcto.':'Revisá la afirmación.'} ${item.explanation}`);if(ok)markComplete('practica');});options.appendChild(b);});feedback.className='feedback';feedback.textContent='';typeset(statement);}
+    function render(){const item=errorCases[errorIndex];counter.textContent=`Caso ${errorIndex+1}`;statement.innerHTML=item.statement;options.innerHTML='';item.options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='choice-button';b.innerHTML=text;b.addEventListener('click',()=>{const ok=i===item.answer;setFeedback(feedback,ok?'success':'danger',`${ok?'Correcto.':'Revisá la afirmación.'} ${item.explanation}`);if(ok)markComplete('practica');});options.appendChild(b);});feedback.className='feedback';feedback.textContent='';typeset(statement);typeset(options);}
     document.getElementById('nextErrorCase').addEventListener('click',()=>{errorIndex=(errorIndex+1)%errorCases.length;render();});render();
   }
 
   function setupQuiz(){
     const container=document.getElementById('quizQuestions'),form=document.getElementById('quizForm'),result=document.getElementById('quizResult');let current=[];
-    function build(){current=shuffle([...quizBank]).slice(0,10).map(item=>({...item,displayOptions:shuffle(item.options.map((text,i)=>({text,original:i})))}));container.innerHTML=current.map((item,i)=>`<fieldset class="quiz-question"><legend><span>${i+1}</span>${item.text}</legend>${item.displayOptions.map((o,j)=>`<label><input type="radio" name="q${i}" value="${o.original}"><span>${o.text}</span></label>`).join('')}<div class="question-feedback" id="qFeedback${i}"></div></fieldset>`).join('');result.className='quiz-result';result.innerHTML='';typeset(container);}
+    function build(){current=shuffle([...quizBank]).slice(0,10).map(item=>({...item,displayOptions:shuffle(item.options.map((text,i)=>({text,original:i})))}));container.innerHTML=current.map((item,i)=>`<fieldset class="quiz-question"><legend><span class="quiz-number">${i+1}</span><span class="quiz-question-text">${item.text}</span></legend>${item.displayOptions.map(o=>`<label><input type="radio" name="q${i}" value="${o.original}"><span class="quiz-option-text">${o.text}</span></label>`).join('')}<div class="question-feedback" id="qFeedback${i}"></div></fieldset>`).join('');result.className='quiz-result';result.innerHTML='';typeset(container);}
     form.addEventListener('submit',e=>{e.preventDefault();let score=0,answered=0;current.forEach((item,i)=>{const selected=form.querySelector(`input[name="q${i}"]:checked`),fb=document.getElementById(`qFeedback${i}`);if(selected){answered++;const ok=Number(selected.value)===item.answer;if(ok)score++;fb.className=`question-feedback ${ok?'correct':'incorrect'}`;fb.textContent=`${ok?'Correcto.':'Respuesta incorrecta.'} ${item.explanation}`;}else{fb.className='question-feedback incorrect';fb.textContent=`Sin responder. ${item.explanation}`;}});const pct=Math.round(score/current.length*100);result.className=`quiz-result ${pct>=70?'success':'warning'}`;result.innerHTML=`<strong>${score}/${current.length} · ${pct}%</strong><p>Respondiste ${answered} preguntas. ${pct>=70?'Buen dominio general de la unidad.':'Revisá los módulos vinculados con los errores y generá otro intento.'}</p>`;if(pct>=70)markComplete('autoevaluacion');});
     document.getElementById('newQuiz').addEventListener('click',build);build();
   }
@@ -599,7 +612,7 @@
     if(xmin<=0&&xmax>=0){svg.appendChild(line(X(0),Y(ymin),X(0),Y(ymax),'svg-axis'));text(svg,X(0)+9,Y(ymax)+16,'y','svg-axis-label');}
     if(title) text(svg,margin,24,title,'svg-point-label');
     guides.forEach(g=>{const l=line(X(g.start[0]),Y(g.start[1]),X(g.end[0]),Y(g.end[1]),'svg-guide');svg.appendChild(l);});
-    vectors.forEach((v,i)=>{const markerId=`arrow-${svg.id}-${i}`;const marker=el('marker',{id:markerId,markerWidth:'10',markerHeight:'10',refX:'8',refY:'5',orient:'auto',markerUnits:'strokeWidth'});marker.appendChild(el('path',{d:'M0,0 L10,5 L0,10 Z',fill:v.color||colors.blue}));defs.appendChild(marker);const l=line(X(v.start[0]),Y(v.start[1]),X(v.end[0]),Y(v.end[1]),'svg-vector');l.style.stroke=v.color||colors.blue;l.style.strokeWidth=v.width||5;if(v.dash)l.style.strokeDasharray='8 6';l.setAttribute('marker-end',`url(#${markerId})`);svg.appendChild(l);if(v.label){const mx=X(v.end[0])+(v.end[0]>=v.start[0]?10:-32),my=Y(v.end[1])-8;text(svg,mx,my,v.label,'svg-vector-label',v.color||colors.blue);}});
+    vectors.forEach((v,i)=>{const markerId=`arrow-${svg.id}-${i}`;const marker=el('marker',{id:markerId,markerWidth:'8',markerHeight:'8',refX:'7.4',refY:'4',orient:'auto',markerUnits:'userSpaceOnUse'});marker.appendChild(el('path',{d:'M0,0 L8,4 L0,8 Z',fill:v.color||colors.blue}));defs.appendChild(marker);const l=line(X(v.start[0]),Y(v.start[1]),X(v.end[0]),Y(v.end[1]),'svg-vector');l.style.stroke=v.color||colors.blue;l.style.strokeWidth=v.width||5;if(v.dash)l.style.strokeDasharray='8 6';l.setAttribute('marker-end',`url(#${markerId})`);svg.appendChild(l);if(v.label){const mx=X(v.end[0])+(v.end[0]>=v.start[0]?10:-32),my=Y(v.end[1])-8;text(svg,mx,my,v.label,'svg-vector-label',v.color||colors.blue);}});
     points.forEach(o=>{svg.appendChild(el('circle',{cx:X(o.p[0]),cy:Y(o.p[1]),r:'5',class:'svg-point'}));text(svg,X(o.p[0])+8,Y(o.p[1])-8,o.label,'svg-point-label');});
   }
 
@@ -615,5 +628,10 @@
   function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
   function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
   function setFeedback(element,type,textValue){element.className=`feedback ${type}`;element.textContent=textValue;}
-  function typeset(root){if(window.MathJax?.typesetPromise){window.MathJax.typesetPromise(root?[root]:undefined).catch(()=>{});} }
+  function typeset(root){
+    if(!window.MathJax?.typesetPromise) return;
+    const targets=root?[root]:undefined;
+    if(root && window.MathJax.typesetClear) window.MathJax.typesetClear(targets);
+    window.MathJax.typesetPromise(targets).catch(()=>{});
+  }
 })();

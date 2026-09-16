@@ -130,7 +130,9 @@ function arrowFrom(originArray, vectorArray, color, label = '', minLength = 0.00
   const vector = new THREE.Vector3(...vectorArray);
   const length = vector.length();
   const direction = length > minLength ? vector.clone().normalize() : new THREE.Vector3(1, 0, 0);
-  const arrow = new THREE.ArrowHelper(direction, origin, Math.max(length, minLength), color, Math.min(0.55, length * 0.18), Math.min(0.32, length * 0.1));
+  const headLength = Math.min(0.30, Math.max(0.12, length * 0.10));
+  const headWidth = Math.min(0.16, Math.max(0.07, length * 0.05));
+  const arrow = new THREE.ArrowHelper(direction, origin, Math.max(length, minLength), color, headLength, headWidth);
   const group = new THREE.Group();
   group.add(arrow);
   if (label && length > minLength) {
